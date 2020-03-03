@@ -1,6 +1,8 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
 
-const modalReducer = (state = {}, action) => {
+const _nullState = null;
+
+const modalReducer = (state = _nullState, action) => {
     Object.freeze(state);
 
     switch (action.type) {

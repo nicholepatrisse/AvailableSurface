@@ -1,4 +1,5 @@
 import React from 'react';
+import DropDown from './drop_down';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -14,10 +15,19 @@ class NavBar extends React.Component {
         );
     }
 
+    handleClick() {
+        if (this.props.modal === 'dropDown') {
+            document.addEventListener('click', this.props.closeModal)
+        } else {
+            document.removeEventListener('click', this.props.closeModal)
+        }
+    };
+
     personalGreeting() {
         return (
-            <nav className="nav-greeting">
-                <h2>Hi, {this.props.currentUser}!</h2>
+            <nav className="nav-greeting" onClick={() => this.props.openModal('dropDown')}>
+                <h2 class="greeting">Hi, {this.props.currentUser}! ▼</h2>
+                <DropDown />
             </nav>
         );
     }
@@ -25,6 +35,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="nav-bar">
+                {this.handleClick()}
                 <div className="logo-box">
                     <img src=""></img>
                     AvailableSurface
@@ -37,33 +48,5 @@ class NavBar extends React.Component {
         )
     };
 }
-
-// const NavBar = ({ userId, logout, openModal, users }) => {
-//     let currentUser;
-//     if (userId) currentUser = users[userId];
-
-//     const sessionLinks = () => (
-//         <nav className="login-signup">
-//             <button onClick={() => openModal('signup')}>Sign Up</button>
-//             <button onClick={() => openModal('login')}>Sign In</button>
-//         </nav>
-//     );
-
-//     const personalGreeting = () => (
-//         <nav>
-//             <h2>Hi, {currentUser}!</h2>
-//         </nav>
-//     )
-
-//     return (
-//         <div>
-//             Logo
-
-//             {currentUser ? 
-//             personalGreeting(currentUser, logout) : 
-//             sessionLinks()}
-//         </div>
-//     )
-// };
 
 export default NavBar;

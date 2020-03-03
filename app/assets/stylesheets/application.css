@@ -25,6 +25,7 @@
      height: 400px;
      display: flex;
      justify-content: center;
+     position: relative;
  }
 
  .main-title {

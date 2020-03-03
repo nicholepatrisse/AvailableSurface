@@ -10,8 +10,7 @@ const usersReducer = (state = {}, action) => {
             return newState;
 
         case LOGOUT_CURRENT_USER:
-            delete newState[action.user.id];
-            return newState;
+            return {};
     
         default:
             return state;

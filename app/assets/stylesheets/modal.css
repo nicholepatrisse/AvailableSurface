@@ -39,6 +39,7 @@
     border: 0;
     transition: 1s;
     font-size: 16px;
+    border-radius: 5px;
 }
 
 .session-form-container button:hover {
