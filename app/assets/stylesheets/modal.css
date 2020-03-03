@@ -1,0 +1,73 @@
+.modal-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.modal-login {
+    position: absolute;
+    top: 206px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-signup {
+    position: absolute;
+    top: 260px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.session-form-container {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.session-form-container button {
+    width: 465px;
+    margin: 10px 0;
+    padding: 10px;
+    color: white;
+    background-color: #bf1722;
+    border: 0;
+    transition: 1s;
+    font-size: 16px;
+}
+
+.session-form-container button:hover {
+    background-color: #7e0e16;
+}
+
+.session-form-container input {
+    margin-bottom: 10px;
+    width:440px;
+    height: 20px;
+    padding: 10px;
+}
+
+.session-form-box {
+    font-size: 14px;
+    width: 460px;
+}
+
+.session-form-container h2 {
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+.divider {
+    height: 0.5px;
+    background-color: gray;
+    width: 100%;
+}
+
+.session-form p {
+    color: #bf1722;
+}
