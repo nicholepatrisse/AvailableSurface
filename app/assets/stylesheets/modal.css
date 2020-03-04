@@ -79,6 +79,7 @@
 
 .other-form-link {
     color: #bf1722;
+    cursor: default;
 }
 
 .demo-button {
@@ -106,3 +107,4 @@
 .error {
     color: #bf1722;
 }
+
