@@ -106,7 +106,3 @@
 .error {
     color: #bf1722;
 }
-
-input:invalid {
-    border: 2px solid red;
-}
