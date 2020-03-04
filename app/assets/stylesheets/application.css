@@ -25,7 +25,8 @@
      height: 400px;
      display: flex;
      justify-content: center;
-     position: relative;
+     position: absolute;
+     top: 50px;
  }
 
  .main-title {

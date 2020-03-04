@@ -10,7 +10,6 @@ const App = () => (
         <Modal />
         <NavBarContainer />
         <Main />
-        <Footer />
     </div>
 );
 

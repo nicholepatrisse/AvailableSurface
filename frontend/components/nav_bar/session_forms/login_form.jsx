@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.submitDemo = this.submitDemo.bind(this);
     };
 
     update(field) {
@@ -18,7 +19,14 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
+        let user = Object.assign({}, this.state);
+        this.props.processForm(user)
+        .then(this.props.closeModal);
+    }
+
+    submitDemo(e) {
+        e.preventDefault()
+        let user = { email: 'demo@gmail.com', password: 'password' }
         this.props.processForm(user)
         .then(this.props.closeModal);
     }
@@ -30,6 +38,7 @@ class LoginForm extends React.Component {
                     <h2>Please sign in</h2>
                     <div className="divider" />
                     <br/>
+                    {this.props.errors}
                     <div className="session-form">
                         <br/>
                         <input 
@@ -47,12 +56,12 @@ class LoginForm extends React.Component {
                         />
                         <br/>
                         <button>Sign In</button>
-                        <br/>
-                        Don't want to complete the form?
-                        <button>Demo Account</button>
-                        New to AvailableSurface? <p onClick={this.props.otherForm}>Create an account</p>
                     </div>
                 </form>
+                <br/>
+                Don't want to complete the form?
+                <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
+                New to AvailableSurface? <p onClick={this.props.otherForm}>Create an account</p>
             </div>
         )
     }

@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.submitDemo = this.submitDemo.bind(this);
     };
 
     update(field) {
@@ -23,16 +24,28 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user)
-            .then(this.props.closeModal);
+        .then(this.props.closeModal);
+    }
+
+    submitDemo(e) {
+        e.preventDefault();
+        const user = { email: 'demo@gmail.com', password: 'password' }
+        this.props.login(user)
+        .then(this.props.closeModal);
     }
 
     render() {
+        const errors = this.props.errors.map(error => (
+            <div>{error}</div>
+        ));
+
         return (
             <div className="session-form-container">
                 <form onSubmit={this.handleSubmit} className="session-form-box">
                     <h2>Welcome to AvailableSurface!</h2>
                     <div className="divider" />
                     <br />
+                    {errors}
                     <div className="session-form">
                         <br />
                         <input
@@ -63,13 +76,13 @@ class SignupForm extends React.Component {
                             placeholder="Password"
                             />
                         <br />
-                        <button>Sign In</button>
-                        <br />
-                        Don't want to complete the form?
-                        <button>Demo Account</button>
-                        Already have an account? <p onClick={this.props.otherForm}>Sign in</p>
+                        <button>Sign Up</button>
                     </div>
                 </form>
+                <br />
+                Don't want to complete the form?
+                <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
+                Already have an account? <p onClick={this.props.otherForm}>Sign in</p>
             </div>
         )
     }

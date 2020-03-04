@@ -10,14 +10,14 @@
 
 .modal-login {
     position: absolute;
-    top: 206px;
+    top: 216px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .modal-signup {
     position: absolute;
-    top: 260px;
+    top: 270px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -28,6 +28,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .session-form-container button {
@@ -71,4 +72,10 @@
 
 .session-form p {
     color: #bf1722;
+}
+
+.session-form-container .demo-button {
+    background-color: white;
+    border: 1px solid gray;
+    color: black;
 }

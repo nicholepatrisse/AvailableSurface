@@ -13,3 +13,4 @@ u2 = User.create({email: 'eric@gmail.com', first_name: 'eric', last_name: 'ho', 
 u3 = User.create({email: 'nic@gmail.com', first_name: 'nic', last_name: 'kruger', password:'password'})
 u4 = User.create({email: 'alec@gmail.com', first_name: 'alec', last_name: 'keeler', password:'password'})
 u5 = User.create({email: 'james@gmail.com', first_name: 'james', last_name: 'berke', password:'password'})
+u6 = User.create({email: 'demo@gmail.com', first_name: 'Demo', last_name: 'User', password:'password'})

@@ -7,16 +7,17 @@
 }
 
 .nav-greeting {
+    position: absolute;
+    right: 20px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
+    z-index: 15;
 }
 
 .greeting {
-    position: absolute;
-    right: 50px;
 }
 
 .signup-button {
@@ -46,13 +47,13 @@
 
 .drop-down {
     position: relative;
-    z-index: 10;
     background-color: white;
-    top: 25px;
+    top: 121px;
     left: -20px;
     border-radius: 5px;
     overflow: hidden;
     width: 150px;
+    z-index: 10;
 }
 
 .drop-down li {
