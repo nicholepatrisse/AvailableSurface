@@ -33,17 +33,20 @@
 
 .session-form-container button {
     width: 465px;
-    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
     padding: 10px;
+    margin-top: 10px;
+}
+
+.form-submit {
     color: white;
     background-color: #bf1722;
     border: 0;
     transition: 1s;
-    font-size: 16px;
-    border-radius: 5px;
 }
 
-.session-form-container button:hover {
+.form-submit:hover {
     background-color: #7e0e16;
 }
 
@@ -70,12 +73,32 @@
     width: 100%;
 }
 
-.session-form p {
+.session-form-container p {
+    text-align: left;
+}
+
+.other-form-link {
     color: #bf1722;
 }
 
-.session-form-container .demo-button {
+.demo-button {
     background-color: white;
     border: 1px solid gray;
     color: black;
+    transition: 0.5s;
+    margin-bottom: 10px;
+}
+
+.demo-button:hover {
+    border: 1px solid #bf1722;
+    background-color: white;
+}
+
+.session-form-container input {
+    border-radius: 5px;
+}
+
+.session-options p {
+    font-size: 14px;
+    line-height: 1.5;
 }

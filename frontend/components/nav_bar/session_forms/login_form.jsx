@@ -55,13 +55,15 @@ class LoginForm extends React.Component {
                             placeholder="Password"
                         />
                         <br/>
-                        <button>Sign In</button>
+                        <button class="form-submit">Sign In</button>
                     </div>
                 </form>
                 <br/>
-                Don't want to complete the form?
-                <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
-                New to AvailableSurface? <p onClick={this.props.otherForm}>Create an account</p>
+                <div className="session-options">
+                    <p>Don't want to complete the form?</p>
+                    <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
+                    <p>New to AvailableSurface? <span className="other-form-link" onClick={this.props.otherForm}>Create an account</span></p>
+                </div>
             </div>
         )
     }

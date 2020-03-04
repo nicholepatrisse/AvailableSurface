@@ -76,13 +76,15 @@ class SignupForm extends React.Component {
                             placeholder="Password"
                             />
                         <br />
-                        <button>Sign Up</button>
+                        <button className="form-submit">Sign Up</button>
                     </div>
                 </form>
                 <br />
-                Don't want to complete the form?
-                <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
-                Already have an account? <p onClick={this.props.otherForm}>Sign in</p>
+                <div className="session-options">
+                    <p>Don't want to complete the form?</p>
+                    <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>
+                    <p>Already have an account? <span className="other-form-link" onClick={this.props.otherForm}>Sign In</span></p>
+                </div>
             </div>
         )
     }

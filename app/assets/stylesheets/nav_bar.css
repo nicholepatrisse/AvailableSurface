@@ -8,16 +8,20 @@
 
 .nav-greeting {
     position: absolute;
+    top: 20px;
     right: 20px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    z-index: 15;
 }
 
 .greeting {
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
 }
 
 .signup-button {
@@ -48,8 +52,8 @@
 .drop-down {
     position: relative;
     background-color: white;
-    top: 121px;
-    left: -20px;
+    top: 25px;
+    left: 10px;
     border-radius: 5px;
     overflow: hidden;
     width: 150px;
