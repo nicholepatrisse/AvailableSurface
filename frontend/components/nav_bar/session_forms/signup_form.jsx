@@ -36,7 +36,7 @@ class SignupForm extends React.Component {
 
     render() {
         const errors = this.props.errors.map(error => (
-            <div>{error}</div>
+            <div className="error">{error}</div>
         ));
 
         return (
@@ -53,6 +53,7 @@ class SignupForm extends React.Component {
                             value={this.state.firstName}
                             onChange={this.update('firstName')}
                             placeholder='First Name'
+                            required
                         />
                         <br />
                         <input
@@ -60,6 +61,7 @@ class SignupForm extends React.Component {
                             value={this.state.lastName}
                             onChange={this.update('lastName')}
                             placeholder="Last Name"
+                            required
                             />
                         <br />
                         <input
@@ -67,6 +69,7 @@ class SignupForm extends React.Component {
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder="Email"
+                            required
                             />
                         <br />
                         <input
@@ -74,6 +77,8 @@ class SignupForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder="Password"
+                            minLength="6"
+                            required
                             />
                         <br />
                         <button className="form-submit">Sign Up</button>

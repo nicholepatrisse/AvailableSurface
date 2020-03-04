@@ -37,8 +37,11 @@ class NavBar extends React.Component {
             <div className="nav-bar">
                 {this.handleClick()}
                 <div className="logo-box">
-                    <img src=""></img>
-                    AvailableSurface
+                    <img src={window.logo} className="nav-logo"/>
+                    <div className="title">
+                        AvailableSurface
+                        <div className="sub-title">An OpenTable Clone</div>
+                    </div>
                 </div>
 
                 {this.props.currentUser ? 

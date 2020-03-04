@@ -46,10 +46,11 @@ class LoginForm extends React.Component {
                     <div className="session-form">
                         <br/>
                         <input 
-                            type="text"
+                            type="email"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder='Email'
+                            required type='email'
                         />
                         <br/>
                        <input 
@@ -57,9 +58,10 @@ class LoginForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder="Password"
+                            required
                         />
                         <br/>
-                        <button class="form-submit">Sign In</button>
+                        <button className="form-submit">Sign In</button>
                     </div>
                 </form>
                 <br/>
