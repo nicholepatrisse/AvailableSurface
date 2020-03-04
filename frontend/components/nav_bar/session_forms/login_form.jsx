@@ -32,13 +32,17 @@ class LoginForm extends React.Component {
     }
 
     render() {
+        const errors = this.props.errors.map(error => (
+            <div>{error}</div>
+        ));
+
         return(
             <div className="session-form-container">
                 <form onSubmit={this.handleSubmit} className="session-form-box">
                     <h2>Please sign in</h2>
                     <div className="divider" />
                     <br/>
-                    {this.props.errors}
+                    {errors}
                     <div className="session-form">
                         <br/>
                         <input 
