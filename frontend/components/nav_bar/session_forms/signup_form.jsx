@@ -5,8 +5,8 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             email: '',
             password: ''
         };
@@ -51,7 +51,7 @@ class SignupForm extends React.Component {
                         <input
                             type="text"
                             value={this.state.firstName}
-                            onChange={this.update('firstName')}
+                            onChange={this.update('first_name')}
                             placeholder='First Name'
                             required
                         />
@@ -59,7 +59,7 @@ class SignupForm extends React.Component {
                         <input
                             type="text"
                             value={this.state.lastName}
-                            onChange={this.update('lastName')}
+                            onChange={this.update('last_name')}
                             placeholder="Last Name"
                             required
                             />
