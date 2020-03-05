@@ -1,0 +1,1 @@
+json.extract! restaurant, :name, :street_address, :city, :state, :price, :open_at, :closes_at, :description, :lat, :lng, :cuisine

@@ -33,6 +33,8 @@ class User < ApplicationRecord
     end
 
     def ensure_photo
-        
+        unless self.photo.attached?
+            self.photo.attach(io: File.open('app/assets/images/mustache_logo.png'), filename: 'mustache_logo.png')
+        end
     end
 end

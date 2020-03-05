@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+require 'JSON'
 
 User.destroy_all
 
@@ -14,3 +16,34 @@ u3 = User.create({email: 'nic@gmail.com', first_name: 'nic', last_name: 'kruger'
 u4 = User.create({email: 'alec@gmail.com', first_name: 'alec', last_name: 'keeler', password:'password'})
 u5 = User.create({email: 'james@gmail.com', first_name: 'james', last_name: 'berke', password:'password'})
 u6 = User.create({email: 'demo@gmail.com', first_name: 'Demo', last_name: 'User', password:'password'})
+
+Restaurant.destroy_all
+
+cities = ["New york", 'san francisco', 'chicago', 'los angeles', 'miami', 'las vegas']
+ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=5"
+cuisines = ['French', 'Greek', 'Steakhouse', 'Seafood', 'American', 'Italian', 'Tapas', 'Japanese', 'Mexican', 'Sushi']
+
+cities.each do |city|
+    url = "http://opentable.herokuapp.com/api/restaurants?per_page=5&city=#{city}"
+    json = URI.parse(url).read
+    parsed = JSON.parse(json)
+
+    parsed['restaurants'].each do |restaurant|
+        new_restaurant = {
+            'name' => restaurant['name'],
+            'street_address' => restaurant['address'],
+            'city' => restaurant['city'],
+            'state' => restaurant['state'],
+            'price' => restaurant['price'],
+            'lat' => restaurant['lat'],
+            'lng' => restaurant['lng'],
+        }
+
+        new_restaurant['open_at'] = Time.at(rand * Time.now.to_i)
+        new_restaurant['closes_at'] = Time.at(rand * Time.now.to_i)
+        new_restaurant['description'] = JSON.parse(URI.parse(ipsum).read).join
+        new_restaurant['cuisine'] = cuisines[rand(0..cuisines.length)]
+        res = Restaurant.create(new_restaurant)
+    end
+end
+# http://opentable.herokuapp.com/api/restaurants?city=
