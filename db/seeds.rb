@@ -39,11 +39,12 @@ cities.each do |city|
             'lng' => restaurant['lng'],
         }
 
+        # This in not the greatest randomization in the world, 
+        # this is just a tribute (To Danny Phan's permutation solution)
         new_restaurant['open_at'] = Time.at(rand * Time.now.to_i)
         new_restaurant['closes_at'] = Time.at(rand * Time.now.to_i)
         new_restaurant['description'] = JSON.parse(URI.parse(ipsum).read).join
-        new_restaurant['cuisine'] = cuisines[rand(0..cuisines.length)]
+        new_restaurant['cuisine'] = cuisines[rand(0...cuisines.length)]
         res = Restaurant.create(new_restaurant)
     end
 end
-# http://opentable.herokuapp.com/api/restaurants?city=

@@ -39,17 +39,6 @@
     margin-top: 10px;
 }
 
-.form-submit {
-    color: white;
-    background-color: #bf1722;
-    border: 0;
-    transition: 1s;
-}
-
-.form-submit:hover {
-    background-color: #7e0e16;
-}
-
 .session-form-container input {
     margin-bottom: 10px;
     width:440px;

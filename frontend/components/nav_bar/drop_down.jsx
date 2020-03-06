@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { logout } from '../../actions/session_actions';
 import { closeModal } from '../../actions/modal_actions';
 
-const DropDown = ({ modal, logout, closeModal }) => {
+const DropDown = ({ modal, logout }) => {
     if (!modal || modal != 'dropDown') {
         return null;
     };

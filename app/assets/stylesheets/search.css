@@ -1,0 +1,26 @@
+.search-container {
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.time-selector {
+    font-size: 14px;
+    position: absolute;
+    background-color: white;
+    color: black;
+    line-height: 1.5;
+    width: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.time-option {
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.time-option:hover {
+    background-color: lightgray;
+}
