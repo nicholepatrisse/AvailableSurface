@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NUM_OPTIONS = 15;
+const NUM_OPTIONS = 11;
 
 class TimeSelect extends React.Component {
     constructor(props) {
@@ -53,34 +53,14 @@ class TimeSelect extends React.Component {
         return timeObject;
     }
 
-    subFifteen(timeObject) {
-        timeObject.minute -= 15;
-        if (timeObject.minute < 0) {
-            timeObject.minute = 45;
-            timeObject.hour--;
-        };
-        if (timeObject.hour < 0) {
-            timeObject.hour = 23;
-        }
-        console.log(timeObject)
-        return timeObject;
-    }
-
     timeOptions(num) {
         const startTime = this.objectify(this.props.time)
         const times = [startTime];
-        while (times.length < Math.floor(num/2)) {
+        while (times.length < num) {
             let lastTime = times[times.length - 1];
             let nextTime = Object.assign({}, lastTime);
             nextTime = this.addFifteen(nextTime);
             times.push(nextTime);
-        }
-
-        while (times.length < num) {
-            let lastTime = times[0];
-            let nextTime = Object.assign({}, lastTime);
-            nextTime = this.subFifteen(nextTime);
-            times.unshift(nextTime);
         }
 
         const timesArray = times.map((timeObject, i) => {
@@ -99,6 +79,7 @@ class TimeSelect extends React.Component {
     selectTime(e) {
         let timeParam = {time: e.target.id}
         this.props.recieveTimeParam(timeParam)
+        this.props.closeModal()
     }
 
     handleClick() {
@@ -119,7 +100,7 @@ class TimeSelect extends React.Component {
 
     selectorClosed() {
         return (
-            <div className="time-box" onClick={() => this.props.openModal('time-options')}>
+            <div className="time-option time-box" onClick={() => this.props.openModal('time-options')}>
                 { this.printify(this.objectify(this.props.time)) }
             </div>
         );

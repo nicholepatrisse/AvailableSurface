@@ -1,26 +1,62 @@
 .search-container {
-    margin-top: 20px;
-    width: 80%;
+    margin-top: 30px;
     display: flex;
     align-items: center;
-}
-
-.time-selector {
     font-size: 14px;
-    position: absolute;
-    background-color: white;
     color: black;
     line-height: 1.5;
-    width: 100px;
-    border-radius: 5px;
+}
+
+.time-selector,
+.party-selector {
+    width: 125px;
     overflow: hidden;
+    background-color: white;
+}
+
+.time-option,
+.party-option {
+    padding: 10px;
+    padding-bottom: 5px;
+    cursor: default;
+    background-color: white;
 }
 
 .time-option {
-    padding: 10px;
-    padding-bottom: 5px;
+    border-right: 1px solid lightgray;
 }
 
-.time-option:hover {
+.time-option:hover,
+.party-option:hover {
     background-color: lightgray;
+}
+
+.time-box {
+    border-radius: 5px;
+}
+
+.time-box:hover {
+    background-color: white;
+}
+
+.date-field {
+    padding: 10px;
+    padding-bottom: 5px;
+    width: 125px;
+    border-radius: 5px 0 0 5px;
+    background-color: white;
+    border-right: 1px solid lightgray;
+}
+
+.search-bar {
+    width: 200px;
+    padding: 10px;
+    padding-bottom: 5px;
+    background-color: white;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.party-selector {
+    border-radius: 0 5px 5px 0;
 }

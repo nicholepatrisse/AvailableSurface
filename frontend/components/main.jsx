@@ -5,7 +5,7 @@ const Main = () => (
     <div className="main">
         <div className="main-title">
             Find the perfect surface
-            {/* <Search /> */}
+            <Search />
         </div>
     </div>
 );
