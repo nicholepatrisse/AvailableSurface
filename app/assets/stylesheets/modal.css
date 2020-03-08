@@ -8,18 +8,13 @@
     z-index: 10;
 }
 
-.modal-login {
+.modal {
     position: absolute;
-    top: 216px;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.modal-signup {
-    position: absolute;
-    top: 270px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    text-align: left;
+    height: auto;
 }
 
 .session-form-container {
@@ -32,43 +27,49 @@
 }
 
 .session-form-container button {
-    width: 465px;
+    width: 100%;
     font-size: 16px;
-    border-radius: 5px;
     padding: 10px;
     margin-top: 10px;
 }
 
 .session-form-container input {
+    font-family: 'Spartan', Arial, Helvetica, sans-serif;
+    font-size: 12px;
     margin-bottom: 10px;
     width:440px;
     height: 20px;
     padding: 10px;
-}
-
-.session-form-box {
-    font-size: 14px;
-    width: 460px;
+    border-radius: 5px;
 }
 
 .session-form-container h2 {
     padding: 20px 0;
     font-size: 20px;
+    margin-bottom: -10px;
 }
 
 .divider {
-    height: 0.5px;
+    height: 1px;
     background-color: gray;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.session-form-box {
+    font-size: 14px;
     width: 100%;
 }
 
-.session-form-container p {
-    text-align: left;
+.session-options {
+    width: 100%;
+    margin-top: 20px;
+    display: block;
 }
 
 .other-form-link {
     color: #bf1722;
-    cursor: default;
+    cursor: pointer;
 }
 
 .demo-button {
@@ -76,7 +77,8 @@
     border: 1px solid gray;
     color: black;
     transition: 0.5s;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .demo-button:hover {
@@ -84,13 +86,8 @@
     background-color: white;
 }
 
-.session-form-container input {
-    border-radius: 5px;
-}
-
 .session-options p {
     font-size: 14px;
-    line-height: 1.5;
 }
 
 .error {

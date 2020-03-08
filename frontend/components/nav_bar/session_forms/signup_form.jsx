@@ -44,10 +44,8 @@ class SignupForm extends React.Component {
                 <form onSubmit={this.handleSubmit} className="session-form-box">
                     <h2>Welcome to AvailableSurface!</h2>
                     <div className="divider" />
-                    <br />
                     {errors}
                     <div className="session-form">
-                        <br />
                         <input
                             type="text"
                             value={this.state.first_name}
@@ -55,14 +53,12 @@ class SignupForm extends React.Component {
                             placeholder='First Name'
                             required
                         />
-                        <br />
                         <input
                             type="text"
                             value={this.state.last_name}
                             onChange={this.update('last_name')} placeholder="Last Name"
                             required
                             />
-                        <br />
                         <input
                             type="email"
                             value={this.state.email}
@@ -70,7 +66,6 @@ class SignupForm extends React.Component {
                             placeholder="Email"
                             required
                             />
-                        <br />
                         <input
                             type="password"
                             value={this.state.password}
@@ -79,11 +74,9 @@ class SignupForm extends React.Component {
                             minLength="6"
                             required
                             />
-                        <br />
                         <button className="form-submit">Sign Up</button>
                     </div>
                 </form>
-                <br />
                 <div className="session-options">
                     <p>Don't want to complete the form?</p>
                     <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>

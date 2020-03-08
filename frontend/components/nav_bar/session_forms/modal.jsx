@@ -15,12 +15,10 @@ const Modal = ({ modal, closeModal }) => {
     switch (modal) {
         case 'login':
             component = <LoginFormContainer />;
-            modalType = 'modal-login'
             break;
 
         case 'signup':
             component = <SignupFormContainer />
-            modalType = 'modal-signup'
             break;
     
         default:
@@ -29,7 +27,7 @@ const Modal = ({ modal, closeModal }) => {
 
     return (
         <div className="modal-screen" onClick={closeModal}>
-            <div className={modalType} onClick={ e => e.stopPropagation() }>
+            <div className="modal" onClick={ e => e.stopPropagation() }>
                 { component }
             </div>
         </div>

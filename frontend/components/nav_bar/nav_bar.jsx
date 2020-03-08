@@ -1,5 +1,6 @@
 import React from 'react';
 import DropDown from './drop_down';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class NavBar extends React.Component {
     personalGreeting() {
         return (
             <nav className="nav-greeting" onClick={() => this.props.openModal('dropDown')}>
-                <h2 className="greeting">Hi, {this.props.currentUser}! ▼</h2>
+                <h2 className="greeting">Hi, {this.props.currentUser}! <i class="fas fa-chevron-down"></i></h2>
                 <DropDown />
             </nav>
         );
@@ -39,7 +40,7 @@ class NavBar extends React.Component {
                 <div className="logo-box">
                     <img src={window.logo} className="nav-logo"/>
                     <div className="title">
-                        AvailableSurface
+                        <Link to="/">AvailableSurface</Link>
                         <div className="sub-title">An OpenTable Clone</div>
                     </div>
                 </div>

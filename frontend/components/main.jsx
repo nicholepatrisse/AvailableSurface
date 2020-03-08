@@ -1,12 +1,12 @@
 import React from 'react';
-import Search from './search_bar/search';
+import SearchContainer from './search_container';
 
 const Main = () => (
     <div className="main">
         <div className="main-title">
-            Find the perfect surface
-            <Search />
+            Find your perfect surface
         </div>
+        <SearchContainer />
     </div>
 );
 

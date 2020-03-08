@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import modalReducer from './modal_reducer';
-import searchReducer from './search_reducer';
+import modalReducer from './ui/modal_reducer';
+import filtersReducer from './ui/filters_reducer';
 
 const uiReducer = combineReducers({
     modal: modalReducer,
-    search: searchReducer,
+    filters: filtersReducer,
 });
 
 export default uiReducer;

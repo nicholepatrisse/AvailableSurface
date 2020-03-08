@@ -41,10 +41,8 @@ class LoginForm extends React.Component {
                 <form onSubmit={this.handleSubmit} className="session-form-box">
                     <h2>Please sign in</h2>
                     <div className="divider" />
-                    <br/>
                     {errors}
                     <div className="session-form">
-                        <br/>
                         <input 
                             type="email"
                             value={this.state.email}
@@ -52,7 +50,6 @@ class LoginForm extends React.Component {
                             placeholder='Email'
                             required type='email'
                         />
-                        <br/>
                        <input 
                             type="password"
                             value={this.state.password}
@@ -60,11 +57,9 @@ class LoginForm extends React.Component {
                             placeholder="Password"
                             required
                         />
-                        <br/>
                         <button className="form-submit">Sign In</button>
                     </div>
                 </form>
-                <br/>
                 <div className="session-options">
                     <p>Don't want to complete the form?</p>
                     <button className="demo-button" onClick={this.submitDemo}>Demo Account</button>

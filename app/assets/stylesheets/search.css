@@ -1,51 +1,66 @@
 .search-container {
-    margin-top: 30px;
     display: flex;
     align-items: center;
     font-size: 14px;
     color: black;
     line-height: 1.5;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    position: relative;
+}
+
+.far {
+    position: absolute;
+    z-index: 5;
+}
+
+.fa-calendar {
+    top: 11px;
+    left: 10px;
+}
+
+.fa-clock {
+    top: 11px;
+    left: 160px;
+}
+
+.fa-user {
+    top: 11px;
+    left: 314px;
 }
 
 .time-selector,
-.party-selector {
+.party-selector,
+.date-selector {
     width: 125px;
     overflow: hidden;
     background-color: white;
+    padding: 10px 0 10px 27px;
+    padding-bottom: 5px;
+    cursor: pointer;
 }
 
-.time-option,
+.date-input {
+    cursor: pointer;
+}
+
 .party-option {
-    padding: 10px;
-    padding-bottom: 5px;
-    cursor: default;
+    padding: 10px 0px 5px 27px;
     background-color: white;
 }
 
-.time-option {
-    border-right: 1px solid lightgray;
-}
-
-.time-option:hover,
 .party-option:hover {
     background-color: lightgray;
 }
 
-.time-box {
-    border-radius: 5px;
-}
-
-.time-box:hover {
-    background-color: white;
-}
-
-.date-field {
-    padding: 10px;
-    padding-bottom: 5px;
-    width: 125px;
-    border-radius: 5px 0 0 5px;
-    background-color: white;
-    border-right: 1px solid lightgray;
+.party-options {
+    position: absolute;
+    align-self: flex-start;
+    left: 306px;
+    width: 152px;
+    border-radius: 0 5px 5px;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .search-bar {
@@ -53,10 +68,130 @@
     padding: 10px;
     padding-bottom: 5px;
     background-color: white;
-    margin-left: 20px;
+    margin-left: 10px;
     border-radius: 5px;
+    cursor: text;
 }
 
 .party-selector {
     border-radius: 0 5px 5px 0;
+}
+
+.date-selector {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid lightgray;
+}
+
+.time-selector {
+    border-right: 1px solid lightgray;
+}
+
+.search-button {
+    margin-left: 10px;
+    padding: 9.5px;
+    font-size: 16px;
+}
+
+.search-input,
+.date-input {
+    font-family: 'Spartan', Arial, Helvetica, sans-serif;
+    border: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+.react-datepicker {
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: -2px;
+    margin-left: -10px;
+    position: absolute;
+    left: -17px;
+    top: 3px;
+    border-radius: 0 0 5px 5px;
+}
+
+.react-datepicker__week {
+    display: flex;
+    justify-content: center;
+}
+
+.react-datepicker__current-month {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__navigation {
+    position: absolute;
+}
+
+.react-datepicker__navigation--next {
+    right: 10px;
+}
+
+.react-datepicker__day-names {
+    display: flex;
+    justify-content: space-around;
+    color: gray;
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__day {
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    padding: 6px 4px 1px 4px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.react-datepicker__day:hover {
+    background-color: lightgray;
+}
+
+.react-datepicker__day--selected {
+    background-color: #bf1722;
+    color: white;
+}
+
+.react-datepicker__day--selected:hover {
+    background-color: #7e0e16;
+}
+
+.react-datepicker__day--outside-month {
+    color: gray;
+}
+
+.react-datepicker--time-only {
+    padding: 0;
+    width: 150px;
+    position: absolute;
+    left: -17px;
+    top: 5px;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+
+.react-datepicker__time {
+    height: 300px;
+    overflow: scroll;
+}
+
+.react-datepicker__time-list-item {
+    padding: 10px 0px 5px 27px;
+}
+
+.react-datepicker__time-list-item:hover {
+    background-color: lightgray;
+}
+
+@media only screen and (max-width: 600px) {
+    .party-selector, 
+    .search-input,
+    .search-bar {
+        display: none;
+    }
 }
