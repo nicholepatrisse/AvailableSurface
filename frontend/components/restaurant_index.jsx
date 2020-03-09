@@ -19,7 +19,6 @@ class RestaurantIndex extends React.Component {
 
         return (
             <div className="restaurant-index">
-                {/* Compact Search Bar */}
                 <div className="compact-search">
                     <SearchContainer />
                 </div>

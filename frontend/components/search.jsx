@@ -31,6 +31,7 @@ class Search extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.fetchRestaurants(this.props.filters);
         this.props.history.push('/restaurants');
     }
 

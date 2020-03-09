@@ -1,5 +1,9 @@
 class Api::RestaurantsController < ApplicationController
     def index
+        if !params[:filters]
+            return @restaurants = Restaurant.all
+        end
+        
         hour = params[:filters][:dateParams].to_datetime.hour
         @restaurants = Restaurant.where('open_at <= ?', hour).where('close_at > ?', hour)
         

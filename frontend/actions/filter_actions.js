@@ -17,7 +17,7 @@ export const toggleFilter = (filter, value) => ({
 
 export const updateFilter = (filter, value) => (dispatch, getState) => {
     dispatch(changeFilter(filter, value));
-    return fetchRestaurants(getState().ui.filters)(dispatch);
+    // return fetchRestaurants(getState().ui.filters)(dispatch);
 };
 
 export const updateToggleFilter = (filter, value) => (dispatch, getState) => {

@@ -27,7 +27,7 @@ cities.each do |city|
     url = "http://opentable.herokuapp.com/api/restaurants?per_page=5&city=#{city}"
     json = URI.parse(url).read
     parsed = JSON.parse(json)
-
+    
     parsed['restaurants'].each do |restaurant|
         new_restaurant = {
             'name' => restaurant['name'],
@@ -46,5 +46,10 @@ cities.each do |city|
         new_restaurant['description'] = JSON.parse(URI.parse(ipsum).read).join
         new_restaurant['cuisine'] = cuisines[rand(0...cuisines.length)]
         res = Restaurant.create(new_restaurant)
+
+        photo_num = rand(1..30)
+        photo_name = "#{photo_num}.jpg"
+        photo_file = File.open("app/assets/images/restaurant_photos/#{photo_name}")
+        res.photo.attach(io: photo_file, filename: photo_name)
     end
 end

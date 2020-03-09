@@ -6,7 +6,14 @@ const cities = ["New York", 'San Francisco', 'Chicago', 'Los Angeles', 'Miami', 
 class IndexSidebar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            '$$': false,
+            '$$$': false,
+            '$$$': false,
+        };
+
         this.updateCurrent = this.updateCurrent.bind(this);
+        this.togglePrice = this.togglePrice.bind(this);
     }
 
     updateCurrent(filter) {
@@ -22,12 +29,26 @@ class IndexSidebar extends React.Component {
         return options;
     };
 
+    togglePrice(e) {
+        this.props.updateToggleFilter('priceParams', e.target.id)
+        this.setState({ [e.target.id]: !this.state[e.target.id] })
+    }
+
     render() {
         return (
-            <div className="side-bar">
+            <div className="sidebar">
                 <h2>Price</h2>
-                <div className="sidebar-divider" />
-                {this.generateOptions(['$', '$$', '$$$'], 'priceParams')}
+                <div className="price-options">
+                    <div className={`price-option-container first ${this.state.$$ ? 'toggled' : 'untoggled'}`} onClick={this.togglePrice} id="$$">
+                        $$
+                    </div>
+                    <div className={`price-option-container ${this.state.$$$ ? 'toggled' : 'untoggled'}`} onClick={this.togglePrice} id="$$$">
+                        $$$
+                    </div>
+                    <div className={`price-option-container last ${this.state.$$$$ ? 'toggled' : 'untoggled'}`} onClick={this.togglePrice} id="$$$$">
+                        $$$$
+                    </div>
+                </div>
                 <div className="sidebar-spacer" />
                 <h2>Cuisines</h2>
                 <div className="sidebar-divider" />

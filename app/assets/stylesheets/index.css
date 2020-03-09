@@ -1,10 +1,9 @@
 .restaurant-index {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
 }
 
 .compact-search {
+    display: block;
     position: absolute;
     top: 50px;
     height: 80px;
@@ -16,18 +15,22 @@
 
 .restaurant-index-main {
     position: absolute;
+    width: 80%;
     top: 150px;
+    left: 10%;
+    right: 10%;
     display: flex;
 }
 
-.side-bar, .restaurants {
+.sidebar, .restaurants {
+    display: block;
     padding: 20px;
     font-size: 16px;
     line-height: 1.5;
 }
 
-.side-bar {
-    margin-left: 25%;
+.sidebar {
+    width: 200px;
 }
 
 .sidebar-divider {
@@ -43,7 +46,6 @@
 }
 
 .option {
-    width: 200px;
     font-size: 14px;
 }
 
@@ -51,28 +53,73 @@
     width: 12px;
 }
 
-.restaurants {
-    float: right;
+.price-options {
+    margin-top: 5px;
+    justify-self: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.price-option-container {
     display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid gray;
+    border-right: none;
+    padding: 10px 10px 5px;
+    overflow: hidden;
+}
+
+.price-option-container:hover {
+    background-color: lightgray;
+}
+
+.first {
+    border-radius: 5px 0 0 5px;
+}
+
+.last {
+    border-right: 1px solid gray;
+    border-radius: 0 5px 5px 0;
+}
+
+.toggled {
+    background-color: #237b98;
+    color: white;
+}
+
+.toggled:hover {
+    color: black;
+}
+
+.restaurants {
     width: 100%;
     margin-left: 10px;
 }
 
 .restaurants p {
     font-size: 14px;
-    font-weight: bolder;
 }
 
 .restaurant {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     align-items: top;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
 }
 
 .restaurant img {
-    width: 200px;
-    padding-right: 20px;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 .restaurant a {
@@ -81,13 +128,26 @@
 }
 
 .restaurant-info {
-    width: 400px;
+    margin-left: 20px;
+}
+
+.res-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .res-button {
-    margin-right: 5px;
-    padding: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px;
     font-size: 10px;
+    background-color: lightgray;
+    color: lightgray;
+}
+
+.res-button:hover {
+    background-color: lightgray;
+    color: lightgray;
 }
 
 .fa-star {
@@ -98,16 +158,13 @@
     color: rgb(243, 213, 40);
 };
 
-.closed {
-    background-color: gray;
-}
-
-.restaurant-desc{
-    font-size: 12px;
-    padding: 10px 0;
+.restaurant-desc {
+    /* font-size: 12px; */
 }
 
 .restaurant-desc li {
+    font-size: 12px;
+    padding: 10px 0;
     display: inline;
     padding-right: 15px;
 }

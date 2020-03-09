@@ -3,28 +3,14 @@ import { Link } from 'react-router-dom'
 
 class RestaurantIndexItem extends React.Component {
     generateReservationLinks() {
-        let openClosed = 'open';
-        if (Math.floor(Math.random() * 100) < 50) openClosed = 'closed'; 
         let buttons = [];
         let i = 0;
         while (buttons.length < 5) {
-            buttons.push(<button key={i} className={`res-button ${openClosed}`}>Reserve</button>)
+            buttons.push(<button key={i} className="res-button">Reserve</button>)
             i++;
         }
         return buttons;
     };
-
-    placeHolderImg() {
-        let images = [
-            "https://stmedia.stimg.co/uptown-minneapolis-restaurant-libertine-closed.jpg?w=800",
-            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80",
-            "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80", 
-            "https://images.unsplash.com/photo-1515539408953-9403f070ad2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-            "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=755&q=80",
-        ]
-        let img = images[Math.floor(Math.random() * images.length)];
-        return img;
-    }
 
     generateStars() {
         let randRating = Math.floor(Math.random() * 5)
@@ -51,7 +37,7 @@ class RestaurantIndexItem extends React.Component {
     render () {
         return (
             <div key={this.props.restaurant.id} className="restaurant">
-                <img src={this.placeHolderImg()} />
+                <img src={this.props.restaurant.photoUrl} />
                 <div className="restaurant-info">
                     <Link to={`/restaurants/${this.props.restaurant.id}`}>{this.props.restaurant.name}</Link>
                     <div className="stars-rating">
@@ -63,9 +49,9 @@ class RestaurantIndexItem extends React.Component {
                         <li>{`${this.props.restaurant.city}, ${this.props.restaurant.state}`}</li>
                     </ul>
                     {/* Available Reservation Times */}
-                    <div className="res-buttons">
+                    {/* <div className="res-buttons">
                         {this.generateReservationLinks()}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
