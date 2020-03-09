@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import RestaurantIndex from './restaurant_index';
+import { updateFilter, updateToggleFilter } from '../actions/filter_actions';
 import { fetchRestaurants } from '../actions/restaurant_actions';
 
 const mapStateToProps = state => ({
@@ -8,7 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchRestaurants: params => dispatch(fetchRestaurants(params)),
+    fetchRestaurants: filters => dispatch(fetchRestaurants(filters)),
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+    updateToggleFilter: (filter, value) => dispatch(updateToggleFilter(filter, value)),
 });
 
 export default connect(

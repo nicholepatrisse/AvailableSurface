@@ -41,8 +41,8 @@ cities.each do |city|
 
         # This in not the greatest randomization in the world, 
         # this is just a tribute (To Danny Phan's permutation solution)
-        new_restaurant['open_at'] = Time.at(rand * Time.now.to_i)
-        new_restaurant['closes_at'] = Time.at(rand * Time.now.to_i)
+        new_restaurant['open_at'] = rand(5..16)
+        new_restaurant['close_at'] = (rand(12..28)) % 24;
         new_restaurant['description'] = JSON.parse(URI.parse(ipsum).read).join
         new_restaurant['cuisine'] = cuisines[rand(0...cuisines.length)]
         res = Restaurant.create(new_restaurant)

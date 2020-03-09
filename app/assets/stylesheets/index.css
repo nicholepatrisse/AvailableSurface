@@ -11,13 +11,13 @@
     width: 100%;
     background-color: #2d333f;
     padding-left: 20%;
+    z-index: 1;
 }
 
 .restaurant-index-main {
     position: absolute;
     top: 150px;
     display: flex;
-    justify-content: space-between;
 }
 
 .side-bar, .restaurants {
@@ -26,9 +26,8 @@
     line-height: 1.5;
 }
 
-.side-bar{
-    width: 300px;
-    margin-left: 100px;
+.side-bar {
+    margin-left: 25%;
 }
 
 .sidebar-divider {
@@ -38,11 +37,25 @@
     margin-bottom: 10px;
 }
 
+.sidebar-spacer {
+    height: 20px;
+    width: 100%;
+}
+
+.option {
+    width: 200px;
+    font-size: 14px;
+}
+
+.option input {
+    width: 12px;
+}
+
 .restaurants {
     float: right;
     display: block;
     width: 100%;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 .restaurants p {
@@ -65,4 +78,36 @@
 .restaurant a {
     font-size: 18px;
     color: #247f9e;
+}
+
+.restaurant-info {
+    width: 400px;
+}
+
+.res-button {
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 10px;
+}
+
+.fa-star {
+    color: lightgray;
+}
+
+.gold-star {
+    color: rgb(243, 213, 40);
+};
+
+.closed {
+    background-color: gray;
+}
+
+.restaurant-desc{
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.restaurant-desc li {
+    display: inline;
+    padding-right: 15px;
 }

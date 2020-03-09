@@ -14,22 +14,23 @@ class Search extends React.Component {
     };
 
     selectDate(date) {
-        this.setState({ dateParams: date })
+        this.setState({ dateParams: date }, () =>
+        this.props.updateFilter('dateParams', this.state.dateParams) );
     };
 
     updateParams(e) {
-        this.setState({ searchParams: e.currentTarget.value })
+        this.setState({ searchParams: e.currentTarget.value }, () =>
+        this.props.updateFilter('searchParams', this.state.searchParams) );
     };
 
     selectParty(e) {
-        this.setState({ partyParams: e.target.id })
+        this.setState({ partyParams: e.target.id }, () =>
+        this.props.updateFilter('partyParams', this.state.partyParams) );
         this.props.closeModal()
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
-        this.props.updateFilters(this.state);
         this.props.history.push('/restaurants');
     }
 

@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../actions/modal_actions';
-import { recieveParams } from '../actions/search_actions';
-import { fetchRestaurants } from '../actions/restaurant_actions';
-import { updateFilters } from '../actions/filter_actions';
+import { updateFilter } from '../actions/filter_actions';
 import Search from './search';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -13,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
     openModal: type => dispatch(openModal(type)),
     closeModal: () => dispatch(closeModal()),
-    updateFilters: filters => dispatch(updateFilters(filters))
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
 });
 
 export default connect(

@@ -1,7 +1,7 @@
-export const fetchRestaurants = params => (
+export const fetchRestaurants = filters => (
     $.ajax({
         url: '/api/restaurants',
-        data: { params }
+        data: { filters }
     })
 );
 
