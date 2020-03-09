@@ -6,6 +6,7 @@ class User < ApplicationRecord
     attr_reader :password
     after_initialize :ensure_session_token, :ensure_photo
 
+    has_many :reservations
     has_one_attached :photo
 
     def self.find_by_credentials(email, password)
