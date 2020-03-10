@@ -18,10 +18,13 @@ u5 = User.create!({email: 'james@gmail.com', first_name: 'james', last_name: 'be
 u6 = User.create!({email: 'demo@gmail.com', first_name: 'Demo', last_name: 'User', password:'password'})
 
 Restaurant.destroy_all
+Reservation.destroy_all
 
 cities = ["New york", 'san francisco', 'chicago', 'los angeles', 'miami', 'las vegas']
-ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=5"
+long_ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=5"
+short_ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=1"
 cuisines = ['French', 'Greek', 'Steakhouse', 'Seafood', 'American', 'Italian', 'Tapas', 'Japanese', 'Mexican', 'Sushi']
+occasions = ['Birthday', 'Anniversary', 'Date night', 'Business Meal', 'Celebration', '']
 
 cities.each do |city|
     url = "http://opentable.herokuapp.com/api/restaurants?per_page=5&city=#{city}"
@@ -43,7 +46,7 @@ cities.each do |city|
         # this is just a tribute (To Danny Phan's permutation solution)
         new_restaurant['open_at'] = rand(5..16)
         new_restaurant['close_at'] = (rand(12..28)) % 24;
-        new_restaurant['description'] = JSON.parse(URI.parse(ipsum).read).join
+        new_restaurant['description'] = JSON.parse(URI.parse(long_ipsum).read).join
         new_restaurant['cuisine'] = cuisines[rand(0...cuisines.length)]
         res = Restaurant.create!(new_restaurant)
 
@@ -51,5 +54,20 @@ cities.each do |city|
         photo_name = "#{photo_num}.jpg"
         photo_file = File.open("app/assets/images/restaurant_photos/#{photo_name}")
         res.photo.attach(io: photo_file, filename: photo_name)
+
+        if rand(1..5) === 1
+            requests = rand(1..5) === 1 ? JSON.parse(URI.parse(short_ipsum).read).join : ''
+            time = Time.new(2020, rand(1..12), rand(1..31), rand(res.open_at..res.close_at))
+            reszie = {
+                time: time,
+                user_id: u6.id,
+                party_size: rand(2..10),
+                occasion: occasions[rand(0...occasions.length)],
+                requests: requests,
+                restaurant_id: res.id,
+            }
+            Reservation.create(reszie)
+        end
     end
 end
+

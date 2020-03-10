@@ -11,8 +11,8 @@ const sessionReducer = (state = _nullState, action) => {
 
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            newState['userId'] = action.user.id;
-            newState['firstName'] = action.user.firstName;
+            newState['userId'] = action.payload.user.id;
+            newState['firstName'] = action.payload.user.firstName;
             return newState;
             
         case LOGOUT_CURRENT_USER:

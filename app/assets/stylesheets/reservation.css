@@ -1,0 +1,25 @@
+.res-page {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.res-page h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.res-info {
+    display: flex;
+    margin-top: 10px;
+}
+
+.res-info img {
+    height: 75px;
+    width: 75px;
+    object-fit: cover;
+    padding-right: 10px;
+}
+
+.res-form {
+    margin-top: 10px;
+}

@@ -1,7 +1,7 @@
 class Api::RestaurantsController < ApplicationController
     def index
         if !params[:filters]
-            return @restaurants = Restaurant.all
+            return @restaurants = Restaurant.all.includes(:reservations)
         end
         
         hour = params[:filters][:dateParams].to_datetime.hour

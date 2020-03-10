@@ -27,7 +27,7 @@ class NavBar extends React.Component {
     personalGreeting() {
         return (
             <nav className="nav-greeting" onClick={() => this.props.openModal('dropDown')}>
-                <h2 className="greeting">Hi, {this.props.currentUser}! <i class="fas fa-chevron-down"></i></h2>
+                <h2 className="greeting">Hi, {this.props.currentUser}! <i className="fas fa-chevron-down"></i></h2>
                 <DropDown />
             </nav>
         );

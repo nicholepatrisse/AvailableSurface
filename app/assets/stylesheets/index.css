@@ -132,20 +132,23 @@
 }
 
 .res-buttons {
+    width: 500px;
     display: flex;
     justify-content: space-between;
 }
 
 .res-button {
-    margin-top: 10px;
-    margin-right: 10px;
+    width: 15%;
     padding: 10px;
-    font-size: 10px;
+    font-size: 12px;
+}
+
+.res-inactive {
     background-color: lightgray;
     color: lightgray;
 }
 
-.res-button:hover {
+.res-inactive:hover {
     background-color: lightgray;
     color: lightgray;
 }
