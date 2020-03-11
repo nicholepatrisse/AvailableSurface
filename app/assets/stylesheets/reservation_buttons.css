@@ -1,0 +1,30 @@
+.res-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant-info .res-buttons {
+    width: 600px;
+}
+
+.res-button {
+    width: 100px;
+    padding: 10px;
+}
+
+.res-button a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.res-inactive {
+    background-color: lightgray;
+    color: lightgray;
+}
+
+.res-inactive:hover {
+    background-color: lightgray;
+    color: lightgray;
+}

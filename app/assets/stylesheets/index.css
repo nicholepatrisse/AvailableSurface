@@ -131,28 +131,6 @@
     margin-left: 20px;
 }
 
-.res-buttons {
-    width: 500px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.res-button {
-    width: 15%;
-    padding: 10px;
-    font-size: 12px;
-}
-
-.res-inactive {
-    background-color: lightgray;
-    color: lightgray;
-}
-
-.res-inactive:hover {
-    background-color: lightgray;
-    color: lightgray;
-}
-
 .fa-star {
     color: lightgray;
 }
@@ -170,4 +148,9 @@
     padding: 10px 0;
     display: inline;
     padding-right: 15px;
+}
+
+.loading-clock {
+    margin-top: 20px;
+    height: 200px;
 }

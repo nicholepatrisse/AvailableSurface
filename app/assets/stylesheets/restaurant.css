@@ -1,5 +1,6 @@
 .restaurant-show {
     width: 100%;
+    display: flex;
 }
 
 .img-header {
@@ -14,8 +15,8 @@
 }
 
 .restaurant-show-main {
-    width: 80%;
-    margin-left: 10%;
+    width: 67%;
+    left: 5%;
     position: absolute;
     top: 265px;
     background-color: white;
@@ -41,4 +42,21 @@
 
 .restaurant-desc {
     margin-bottom: 20px;
+}
+
+.restaurant-show-side {
+    position: absolute;
+    width: 15%;
+    top: 265px;
+    right: 5%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}
+
+.restaurant-show-side h2 {
+    padding-bottom: 5px;
 }

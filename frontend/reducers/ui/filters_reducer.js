@@ -1,9 +1,9 @@
-import { UPDATE_FILTER, TOGGLE_FILTER } from '../../actions/filter_actions'
+import { UPDATE_FILTER, UPDATE_FILTERS, TOGGLE_FILTER } from '../../actions/filter_actions'
 
 const nextAvail = new Date();
 nextAvail.setMinutes(Math.round((nextAvail.getMinutes() + 30) / 15) * 15);
 
-const _nullState = {
+const initialState = {
     dateParams: nextAvail,
     partyParams: 2,
     searchParams: "",
@@ -12,7 +12,7 @@ const _nullState = {
     priceParams: [],
 };
 
-const filtersReducer = (state = _nullState, action) => {
+const filtersReducer = (state = initialState, action) => {
     Object.freeze(state);
     const newState = Object.assign({}, state);
 
@@ -20,6 +20,9 @@ const filtersReducer = (state = _nullState, action) => {
         case UPDATE_FILTER:
             newState[action.filter] = action.value;
             return newState;
+
+        case UPDATE_FILTERS:
+            return action.filters;
 
         case TOGGLE_FILTER:
             let valIdx = newState[action.filter].indexOf(action.value);

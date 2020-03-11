@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 class Search extends React.Component {
     constructor(props) {
         super(props)
-        this.state = this.props.filters;
+        this.state = Object.assign({}, this.props.filters);
         this.selectDate = this.selectDate.bind(this);
         this.selectParty = this.selectParty.bind(this);
         this.updateParams = this.updateParams.bind(this);
@@ -15,24 +15,22 @@ class Search extends React.Component {
     };
 
     selectDate(date) {
-        this.setState({ dateParams: date }, () =>
-        this.props.updateFilter('dateParams', this.state.dateParams) );
+        this.setState({ dateParams: date });
     };
 
     updateParams(e) {
-        this.setState({ searchParams: e.currentTarget.value }, () =>
-        this.props.updateFilter('searchParams', this.state.searchParams) );
+        this.setState({ searchParams: e.currentTarget.value });
     };
 
     selectParty(e) {
-        this.setState({ partyParams: e.target.id }, () =>
-        this.props.updateFilter('partyParams', this.state.partyParams) );
-        this.props.closeModal()
+        debugger
+        this.setState({ partyParams: e.target.id }), () => (
+        this.props.closeModal());
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.fetchRestaurants(this.props.filters);
+        this.props.updateFilters(this.state);
         this.props.history.push('/restaurants');
     }
 
@@ -54,7 +52,6 @@ class Search extends React.Component {
 
     partySelector() {
         if (this.props.modal != 'party-options') return null;
-
         return (
             <div className="party-options" onClick={this.selectParty}>
                 {this.generateParties()}

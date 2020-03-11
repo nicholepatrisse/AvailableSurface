@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { fetchRestaurant } from '../actions/restaurant_actions'
+import ReservationButtons from './reservation_buttons';
 
 const price = {
     1: '$',
@@ -33,6 +34,16 @@ class RestaurantPage extends React.Component {
                     </ul>
                     {this.props.restaurant.description}
                 </div>
+                <div className="restaurant-show-side">
+                    <h2>Make a reservation</h2>
+                    <div className="sidebar-divider"></div>
+                    {/* Search Params */}
+                    <ReservationButtons
+                        num={2}
+                        restaurant={this.props.restaurant}
+                        time={this.props.filters.dateParams}
+                    />
+                </div>
             </div>
         );
     }
@@ -42,7 +53,7 @@ class RestaurantPage extends React.Component {
             <div className="restaurant-page">
                 {this.props.restaurant ?
                 this.loaded() :
-                "Not Loaded"}
+                null}
             </div>
         )
     };
@@ -50,7 +61,8 @@ class RestaurantPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     restaurantId: ownProps.match.params.id,
-    restaurant: state.entities.restaurants[ownProps.match.params.id]
+    restaurant: state.entities.restaurants[ownProps.match.params.id],
+    filters: state.ui.filters,
 });
 
 const mapDispatchToProps = dispatch => ({

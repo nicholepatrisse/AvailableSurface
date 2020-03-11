@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { logout } from '../../actions/session_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { Link } from 'react-router-dom';
 
 const DropDown = ({ modal, logout }) => {
     if (!modal || modal != 'dropDown') {
@@ -11,9 +12,9 @@ const DropDown = ({ modal, logout }) => {
     return (
         <div className='drop-down'>
             <ul>
-                <li>My Profile</li>
-                <li>My Dining History</li>
-                <li>My Saved Restaurants</li>
+                <li><Link to="/profile">My Profile</Link></li>
+                <li><Link to="/reservations">My Dining History</Link></li>
+                <li><Link to="/saved">My Saved Restaurants</Link></li>
                 <li onClick={logout}>Sign out</li>
             </ul>
         </div>

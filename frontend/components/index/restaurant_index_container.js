@@ -6,11 +6,11 @@ import { fetchRestaurants } from '../../actions/restaurant_actions';
 const mapStateToProps = state => ({
     filters: state.ui.filters,
     restaurants: state.entities.restaurants,
+    loading: state.ui.loading.restaurantsLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchRestaurants: filters => dispatch(fetchRestaurants(filters)),
-    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
     updateToggleFilter: (filter, value) => dispatch(updateToggleFilter(filter, value)),
 });
 

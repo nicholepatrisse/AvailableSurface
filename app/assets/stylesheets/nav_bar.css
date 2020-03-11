@@ -63,7 +63,7 @@
 .drop-down {
     position: relative;
     background-color: white;
-    top: 35px;
+    top: 30px;
     left: 10px;
     border-radius: 0 0 5px 5px;
     overflow: hidden;
@@ -80,6 +80,11 @@
 
 .drop-down li:hover {
     background-color: lightgray;
+}
+
+.drop-down a {
+    text-decoration: none;
+    color: black;
 }
 
 .nav-logo {

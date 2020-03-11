@@ -13,10 +13,30 @@ class RestaurantIndex extends React.Component {
         return `${num} restaurants available!`;
     };
 
-    render() {
-        let restaurants = Object.values(this.props.restaurants)
-        .map( restaurant => <RestaurantIndexItem key={restaurant.id} restaurant={restaurant} filters={this.props.filters}/> );
+    loading() {
+        return (
+            <div className="restaurants">
+                <p>Loading restaurants, please hold.</p>
+                <img src={window.loading} className="loading-clock"/>
+            </div>
+        )
+    };
 
+    loaded() {
+        let restaurants = Object.values(this.props.restaurants)
+        .map( restaurant => (
+            <RestaurantIndexItem key={restaurant.id} restaurant={restaurant} filters={this.props.filters} />
+        ));
+
+        return (
+            <div className="restaurants">
+                <p>{this.calcTables()}</p>
+                {restaurants}
+            </div>
+        )
+    }
+
+    render() {
         return (
             <div className="restaurant-index">
                 <div className="compact-search">
@@ -24,11 +44,9 @@ class RestaurantIndex extends React.Component {
                 </div>
                 <div className="restaurant-index-main">
                     <IndexSidebar updateToggleFilter={this.props.updateToggleFilter}/>
-                    {/* Restaurant Index */}
-                    <div className="restaurants">
-                        <p>{this.calcTables()}</p>
-                        {restaurants}
-                    </div>
+                    {this.props.loading ? 
+                    this.loading() :
+                    this.loaded()}
                 </div>
             </div>
         )

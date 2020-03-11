@@ -5,7 +5,7 @@ class Api::RestaurantsController < ApplicationController
         end
         
         hour = params[:filters][:dateParams].to_datetime.hour
-        @restaurants = Restaurant.where('open_at <= ?', hour).where('close_at > ?', hour)
+        @restaurants = Restaurant.where('open_at <= ?', hour).where('close_at > ?', hour).includes(:reservations)
         
         cityParams = params[:filters][:cityParams]
         if cityParams && cityParams.length > 0 
