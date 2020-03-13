@@ -46,6 +46,7 @@
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .reservation-detail li {
@@ -59,15 +60,26 @@
     top: -2px;
 }
 
-.reservation-detail button {
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 14px;
-}
-
 .reservation-buttons {
+    width:100px;
     display: flex;
-    justify-content: space-between;
-    padding-right:20px;
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+    color: gray;
 }
 
+.reservation-buttons .far {
+    position: relative;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.reservation-buttons .far:hover {
+    color: #bf1722;
+}
+
+.detail-title {
+    display: flex;
+    margin-bottom: 20px;
+}

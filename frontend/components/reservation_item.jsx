@@ -25,12 +25,8 @@ class ReservationItem extends React.Component {
         if (this.props.editForm) {
             return (
                 <div className="reservation-buttons">
-                    <button onClick={this.handleClick}>
-                            Edit Reservation
-                    </button>
-                    <button onClick={this.cancelReservation}>
-                            Cancel Reservation
-                    </button>
+                    <i className="far fa-edit" onClick={this.handleClick}></i>
+                    <i className="far fa-trash-alt" onClick={this.cancelReservation}></i>
                 </div>
             );
         };
@@ -47,15 +43,17 @@ class ReservationItem extends React.Component {
             <div className="reservation-main">
                 <img src={thumbUrl} />
                 <div className="reservation-detail">
-                    <Link to={`/restaurants/${restaurant.id}`}>
-                        {restaurant.name}
-                    </Link>
+                    <div className="detail-title">
+                        <Link to={`/restaurants/${restaurant.id}`}>
+                            {restaurant.name}
+                        </Link>
+                        {this.editLink()}
+                    </div>
                     <ul>
                         <li><i className="far fa-calendar res-cal"></i> {dateTime.printDate(time)}</li>
                         <li><i className="far fa-clock res-clock"></i> {dateTime.printTime(time)}</li>
                         <li><i className="far fa-user res-user"></i> {partyDesc}</li>
                     </ul>
-                    {this.editLink()}
                 </div>
             </div>
         )
