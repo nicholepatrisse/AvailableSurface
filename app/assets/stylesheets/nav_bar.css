@@ -25,10 +25,14 @@
 .greeting {
     width: 200px;
     text-align: right;
-    position: absolute;
+    position: relative;
     right: 20px;
     font-size: 16px;
     cursor: pointer;
+}
+
+.greeting i {
+    font-size: 12px;
 }
 
 .signup-button {
@@ -61,10 +65,10 @@
 }
 
 .drop-down {
-    position: relative;
+    position: absolute;
     background-color: white;
     top: 30px;
-    left: 10px;
+    left: 65px;
     border-radius: 0 0 5px 5px;
     overflow: hidden;
     width: 150px;

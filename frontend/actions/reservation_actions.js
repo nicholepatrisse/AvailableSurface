@@ -1,5 +1,5 @@
 import * as ReservationAPIUtil from '../util/reservations_api_util';
-import { receiveCurrentUser } from './session_actions';
+import { openModal } from './modal_actions';
 
 export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
 export const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
@@ -22,13 +22,16 @@ export const receiveReservationErrors = errors => ({
 
 export const createReservation = reservation => dispatch => (
     ReservationAPIUtil.createReservation(reservation)
-    .then( payload => dispatch(receiveCurrentUser(payload)))
+    .then( reservation => dispatch(receiveReservation(reservation)))
+    .then( () => dispatch(openModal('res-success')))
     .fail( errors => dispatch(receiveReservationErrors(errors.responseJSON)) )
 );
 
 export const updateReservation = reservation => dispatch => (
     ReservationAPIUtil.updateReservation(reservation)
     .then( reservation => dispatch(receiveReservation(reservation)))
+    .then(() => dispatch(openModal('res-success')))
+    .fail(errors => dispatch(receiveReservationErrors(errors.responseJSON)))
 );
 
 export const deleteReservation = reservationId => dispatch => (

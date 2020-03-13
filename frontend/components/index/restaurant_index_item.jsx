@@ -26,9 +26,11 @@ class RestaurantIndexItem extends React.Component {
     }
 
     render () {
+        let thumbnailUrl = this.props.restaurant.photoUrls[1];
+        
         return (
             <div key={this.props.restaurant.id} className="restaurant">
-                <img src={this.props.restaurant.photoUrl} />
+                <img src={thumbnailUrl} />
                 <div className="restaurant-info">
                     <Link to={`/restaurants/${this.props.restaurant.id}`}>{this.props.restaurant.name}</Link>
                     <div className="stars-rating">
@@ -40,10 +42,10 @@ class RestaurantIndexItem extends React.Component {
                         <li>{`${this.props.restaurant.city}, ${this.props.restaurant.state}`}</li>
                         <li>{`${this.props.restaurant.openAt}-${this.props.restaurant.closeAt}`}</li>
                     </ul>
-                    <ReservationButtons 
-                        num={5} 
+                    <ReservationButtons
                         restaurant={this.props.restaurant}
                         time={this.props.filters.dateParams}
+                        changeFilter={this.props.changeFilter}
                     />
                 </div>
             </div>

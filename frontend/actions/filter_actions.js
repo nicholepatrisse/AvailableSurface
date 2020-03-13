@@ -6,8 +6,8 @@ export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 
 export const changeFilter = (filter, value) => ({
     type: UPDATE_FILTER,
-    filter, 
-    value
+    filter: filter,
+    value: value,
 });
 
 export const changeFilters = filters => ({
@@ -20,10 +20,6 @@ export const toggleFilter = (filter, value) => ({
     filter,
     value
 });
-
-export const updateFilter = (filter, value) => (dispatch, getState) => {
-    dispatch(changeFilter(filter, value));
-};
 
 export const updateFilters = filters => dispatch => {
     dispatch(changeFilters(filters));

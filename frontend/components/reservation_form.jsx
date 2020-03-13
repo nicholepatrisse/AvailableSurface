@@ -1,33 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as dateTime from '../util/date_time_functions';
+import { withRouter } from 'react-router-dom'
 
 class ReservationForm extends React.Component {
     constructor(props) {
         super(props)
-        let phone = this.props.user ? this.props.user.phone : '';
-        let email = this.props.user ? this.props.user.email : '';
-        let user_id = this.props.user ? this.props.user.id : null;
-        let time = this.props.location.state ? this.props.location.state.time : null;
-        let restaurant_id = this.props.restaurant ? this.props.restaurant.id : null;
 
         this.state = {
-            phone,
-            email,
-            time, 
-            user_id, 
-            party_size: this.props.parties,
-            occasion: '',
-            requests: '',
-            restaurant_id
-        };
+            phone: '',
+            email: '',
+            time: new Date(this.props.filters.dateParams),
+            user_id: '',
+            party_size: this.props.filters.partyParams,
+            occasion: this.props.filters.occasion,
+            requests: this.props.filters.requests,
+            restaurant_id: '',
+        }
 
         this.updateRez = this.updateRez.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    constructParams() {
+        if (this.props.user && this.props.filters) {
+            this.setState({
+                phone: this.props.user.phone,
+                email: this.props.user.email,
+                user_id: this.props.userId,
+                restaurant_id: this.props.restaurantId,
+            })
+        }
+    };
+
     componentDidMount() {
-        this.props.fetchRestaurant(this.props.restaurantId);
-        this.props.fetchUser(this.props.userId)
+        this.props.fetchRestaurant(this.props.restaurantId)
+        .then(this.props.fetchUser(this.props.userId))
+        .then(this.constructParams())
     };
 
     loggedIn() {
@@ -51,115 +60,83 @@ class ReservationForm extends React.Component {
         });
     };
 
-    printTime(time) {
-        let minute = time.getMinutes();
-        let hour = time.getHours();
-        let ampm = 'am'
-        if (hour === 12) {
-            ampm = 'pm';
-        } else if (hour === 0) {
-            hour = 12;
-        } else if (hour > 12) {
-            hour -= 12;
-            ampm = "pm";
-        };
-        if (minute < 10) minute = `0${minute}`;
-        return `${hour}:${minute} ${ampm}`
-    }
-
-    printDate(time) {
-        const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']
-        let day = days[time.getDay()];
-        let month = months[time.getMonth()]
-        let date = time.getDate()
-        return `${day}, ${month} ${date}`
-    }
-
     handleSubmit(e) {
         e.preventDefault();
         let reservation = Object.assign({}, this.state);
-        this.props.createReservation(reservation)
-        .then(this.props.openModal('res-success'))
-        .then(this.props.history.push('/'))
+        if (this.props.reservationId) {
+            reservation['id'] = this.props.reservationId;
+            this.props.updateReservation(reservation)
+            .then(this.props.history.push('/'));
+        } else {
+            this.props.createReservation(reservation)
+            .then(this.props.history.push('/'));
+        }
     };
 
-    loaded() {
-        if (this.props.restaurant) {
-            let partyDesc = `${this.props.parties} People`
-            if (this.state.parties === 'larger') partyDesc = 'Larger Party'
-            let dateTime = new Date(this.props.location.state.time);
-            return (
+    render() {
+        if (!this.props.restaurant) return null;
+
+        let partyDesc = `${this.state.party_size} People`
+        if (this.state.party_size === 'larger') partyDesc = 'Larger Party'
+
+        let date = new Date(this.state.time);
+        let thumbUrl = this.props.restaurant.photoUrls[1];
+
+        return(
+            <div className="reservation-form">
                 <div className="res-page">
                     <h2>You're almost done!</h2>
                     <div className="res-info">
-                        <img src={this.props.restaurant.photoUrl} alt=""/>
+                        <img src={thumbUrl} alt="" />
                         <div className="res-detail">
                             <Link to={`restaurants/${this.props.restaurant.id}`}>
                                 {`${this.props.restaurant.name} - ${this.props.restaurant.city}`}
                             </Link>
                             <ul>
-                                <li><i className="far fa-calendar res-cal"></i> {this.printDate(dateTime)}</li>
-                                <li><i className="far fa-clock res-clock"></i> {this.printTime(dateTime)}</li>
+                                <li><i className="far fa-calendar res-cal"></i> {dateTime.printDate(date)}</li>
+                                <li><i className="far fa-clock res-clock"></i> {dateTime.printTime(date)}</li>
                                 <li><i className="far fa-user res-user"></i> {partyDesc}</li>
                             </ul>
                         </div>
                     </div>
                     {this.loggedIn()}
-                    <form className="res-form">
+                    <form className="res-form" onSubmit={this.handleSubmit}>
                         <div className="row1">
-                            <input 
-                                type="tel" 
-                                value={this.state.phone} 
-                                onChange={this.updateRez('phone')} 
+                            <input
+                                type="tel"
+                                value={this.state.phone}
+                                onChange={this.updateRez('phone')}
                                 placeholder="phone"
-                                required
+                                required type="tel"
                             />
-                            <input 
-                                type="email" 
-                                value={this.state.email} 
-                                onChange={this.updateRez('email')} 
+                            <input
+                                type="email"
+                                value={this.state.email}
+                                onChange={this.updateRez('email')}
                                 placeholder="email"
                                 required
                             />
                         </div>
                         <div className="row2">
-                            <input 
-                                type="text" 
-                                value={this.state.occasion} 
-                                onChange={this.updateRez('occasion')} 
+                            <input
+                                type="text"
+                                value={this.state.occasion}
+                                onChange={this.updateRez('occasion')}
                                 placeholder="occasion"
                             />
-                            <input 
-                                type="text" 
-                                value={this.state.requests} 
-                                onChange={() => this.updateRez('requests')} 
+                            <input
+                                type="text"
+                                value={this.state.requests}
+                                onChange={() => this.updateRez('requests')}
                                 placeholder="requests"
                             />
                         </div>
-                        <button onClick={this.handleSubmit}>Complete Reservation</button>
+                        <button type="submit">Complete Reservation</button>
                     </form>
                 </div>
-            )
-        }
-    }
-
-    validateProps() {
-        if (!this.props.restaurantId) {
-            this.props.history.push('/restaurants')
-        } else if (!this.props.location.state) {
-            this.props.history.push(`/restaurants/${this.props.restaurantId}`)
-        }
-    }
-
-    render() {
-        return(
-            <div className="reservation-form">
-                {this.validateProps()}
-                {this.loaded()}
             </div>
         )
     };
 }
 
-export default ReservationForm;
+export default withRouter(ReservationForm);

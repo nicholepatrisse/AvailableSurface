@@ -1,21 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import * as dateTime from '../util/date_time_functions';
+import { withRouter } from 'react-router-dom';
 
 class ReservationButtons extends React.Component {
-    printTime(time) {
-        let minute = time.getMinutes();
-        let hour = time.getHours();
-        let ampm = 'AM'
-        if (hour === 12) {
-            ampm = 'PM';
-        } else if (hour === 0) {
-            hour = 12;
-        } else if (hour > 12) {
-            hour -= 12;
-            ampm = "PM";
-        };
-        if (minute < 10) minute = `0${minute}`;
-        return `${hour}:${minute} ${ampm}`
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this);
     }
 
     available(time) {
@@ -27,29 +17,30 @@ class ReservationButtons extends React.Component {
         };
     };
 
-    generateReservationLinks(num) {
+    handleClick(e) {
+        let timeValue = new Date(e.target.id)
+        timeValue = new Date(timeValue.setMinutes(timeValue.getMinutes() - 15))
+        this.props.changeFilter('dateParams', timeValue)
+        this.props.history.push(`/restaurants/${this.props.restaurant.id}/reserve`)
+    }
+
+    generateReservationLinks() {
         let buttons = [];
         let time = new Date(this.props.time);
-        let inc = 15 * Math.floor(num / 2);
-        time = new Date(time.setMinutes(time.getMinutes() - inc));
+        time = new Date(time.setMinutes(time.getMinutes() - 30));
         let i = 0;
-        while (buttons.length < num) {
+        while (buttons.length < 5) {
             let button;
             if (this.available(time)) {
                 button = (
-                    <button key={i} className={`res-button`}>
-                        <Link to={{
-                            pathname: `/restaurants/${this.props.restaurant.id}/reserve`,
-                            state: {
-                                time: new Date(time)
-                            }
-                        }}>{this.printTime(time)} </Link>
+                    <button key={i} className={`res-button`} id={time} onClick={this.handleClick}>
+                        {dateTime.printTime(time)}
                     </button>
                 )
             } else {
                 button = (
-                    <button key={i} className={`res-button res-inactive`}>
-                        {this.printTime(time)}
+                    <button key={i} className={`res-button res-inactive`} disabled >
+                        Unavailable
                     </button>
                 )
             }
@@ -63,10 +54,10 @@ class ReservationButtons extends React.Component {
     render () {
         return (
             <div className="res-buttons">
-                {this.generateReservationLinks(this.props.num)}
+                {this.generateReservationLinks()}
             </div>
         )
     }
 };
 
-export default ReservationButtons;
+export default withRouter(ReservationButtons);

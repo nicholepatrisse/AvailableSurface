@@ -53,7 +53,10 @@ cities.each do |city|
         photo_num = rand(1..30)
         photo_name = "#{photo_num}.jpg"
         photo_file = File.open("app/assets/images/restaurant_photos/#{photo_name}")
-        res.photo.attach(io: photo_file, filename: photo_name)
+        res.photos.attach(io: photo_file, filename: photo_name)
+        thumb_name = "#{photo_num}_tn.jpg"
+        thumb_file = File.open("app/assets/images/restaurant_thumbnails/#{thumb_name}")
+        res.photos.attach(io: thumb_file, filename: thumb_name)
 
         if rand(1..5) === 1
             requests = rand(1..5) === 1 ? JSON.parse(URI.parse(short_ipsum).read).join : ''

@@ -1,5 +1,5 @@
 .restaurant-index {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .compact-search {
@@ -9,8 +9,14 @@
     height: 80px;
     width: 100%;
     background-color: #2d333f;
-    padding-left: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
     z-index: 1;
+}
+
+.compact-search .search-container {
+    margin-top: 0;
 }
 
 .restaurant-index-main {
@@ -97,7 +103,7 @@
 }
 
 .restaurants {
-    width: 100%;
+    width: 650px;
     margin-left: 10px;
 }
 
@@ -153,4 +159,24 @@
 .loading-clock {
     margin-top: 20px;
     height: 200px;
+}
+
+@media only screen and (max-width: 800px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .compact-search {
+        height: 10px;
+    }
+
+    .compact-search .search-container {
+        display: none;
+    }
+
+    .restaurant-index-main {
+        top: 60px;
+    }
 }

@@ -1,57 +1,58 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-function printTime(time) {
-    let minute = time.getMinutes();
-    let hour = time.getHours();
-    let ampm = 'AM'
-    if (hour === 12) {
-        ampm = 'PM';
-    } else if (hour === 0) {
-        hour = 12;
-    } else if (hour > 12) {
-        hour -= 12;
-        ampm = "PM";
-    };
-    if (minute < 10) minute = `0${minute}`;
-    return `${hour}:${minute} ${ampm}`
-};
-
-function printDate(time) {
-    const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    let day = days[time.getDay()];
-    let month = months[time.getMonth()]
-    let date = time.getDate()
-    return `${day}, ${month} ${date}`
-}
+import * as dateTime from '../util/date_time_functions';
+import { Link, withRouter } from 'react-router-dom';
 
 class ReservationItem extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this);
+        this.cancelReservation = this.cancelReservation.bind(this);
+    }
+
+    handleClick() {
+        this.props.changeFilter('dateParams', new Date(this.props.reservation.time))
+        this.props.changeFilter('partyParams', this.props.reservation.partySize)
+        this.props.changeFilter('occasion', this.props.reservation.occasion)
+        this.props.changeFilter('requests', this.props.reservation.requests)
+        this.props.history.push(`restaurants/${this.props.restaurant.id}/reserve/${this.props.reservation.id}`);
+    };
+
+    cancelReservation() {
+        this.props.deleteReservation(this.props.reservation.id)
+    }
+
     editLink() {
         if (this.props.editForm) {
             return (
-                <button>Edit Reservation</button>
-            )
-        } else {
-            return null;
-        }
-    }
+                <div className="reservation-buttons">
+                    <button onClick={this.handleClick}>
+                            Edit Reservation
+                    </button>
+                    <button onClick={this.cancelReservation}>
+                            Cancel Reservation
+                    </button>
+                </div>
+            );
+        };
+    };
 
     render() {
-        let restaurant = this.props.restaurants[this.props.reszie.restaurantId];
-        let time = new Date(this.props.reszie.time);
-        let partyDesc = this.props.reszie.partySize === 'larger' ? 'Larger Party' : `${this.props.reszie.partySize} People`
+        let restaurant = this.props.restaurant
+        if (!restaurant) return null;
+        let time = new Date(this.props.reservation.time);
+        let partyDesc = this.props.reservation.partySize === 'larger' ? 'Larger Party' : `${this.props.reservation.partySize} People`
+        let thumbUrl = this.props.restaurant.photoUrls[1];
 
         return (
             <div className="reservation-main">
-                <img src={restaurant.photoUrl} />
+                <img src={thumbUrl} />
                 <div className="reservation-detail">
                     <Link to={`/restaurants/${restaurant.id}`}>
                         {restaurant.name}
                     </Link>
                     <ul>
-                        <li><i className="far fa-calendar res-cal"></i> {printDate(time)}</li>
-                        <li><i className="far fa-clock res-clock"></i> {printTime(time)}</li>
+                        <li><i className="far fa-calendar res-cal"></i> {dateTime.printDate(time)}</li>
+                        <li><i className="far fa-clock res-clock"></i> {dateTime.printTime(time)}</li>
                         <li><i className="far fa-user res-user"></i> {partyDesc}</li>
                     </ul>
                     {this.editLink()}
@@ -61,4 +62,4 @@ class ReservationItem extends React.Component {
     };
 }
 
-export default ReservationItem;
+export default withRouter(ReservationItem);

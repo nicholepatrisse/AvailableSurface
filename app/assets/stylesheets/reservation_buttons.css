@@ -1,16 +1,13 @@
 .res-buttons {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-}
-
-.restaurant-info .res-buttons {
-    width: 600px;
+    flex-wrap: wrap;
 }
 
 .res-button {
-    width: 100px;
+    width: 80px;
     padding: 10px;
+    margin: 0 10px 10px 0;
 }
 
 .res-button a {

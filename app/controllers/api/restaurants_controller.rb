@@ -1,11 +1,13 @@
 class Api::RestaurantsController < ApplicationController
     def index
+        @restaurants = Restaurant.with_attached_photos.all.includes(:reservations)
+        
         if !params[:filters]
-            return @restaurants = Restaurant.all.includes(:reservations)
+            return @restaurants
         end
         
         hour = params[:filters][:dateParams].to_datetime.hour
-        @restaurants = Restaurant.where('open_at <= ?', hour).where('close_at > ?', hour).includes(:reservations)
+        @restaurants = @restaurants.where('open_at <= ?', hour).where('close_at > ?', hour).includes(:reservations)
         
         cityParams = params[:filters][:cityParams]
         if cityParams && cityParams.length > 0 

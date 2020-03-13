@@ -82,6 +82,8 @@
 .res-form button {
     margin-top: 20px;
     padding: 10px;
+    font-family: 'Spartan', Arial, Helvetica, sans-serif;
+    font-size:14px;
 }
 
 .user-info {
@@ -92,4 +94,7 @@
 .user-info p {
     color: #bf1722;
     cursor: pointer;
+}
+
+.res-form button {
 }

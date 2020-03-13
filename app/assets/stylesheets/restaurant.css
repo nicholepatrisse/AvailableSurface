@@ -15,7 +15,7 @@
 }
 
 .restaurant-show-main {
-    width: 67%;
+    width: 60%;
     left: 5%;
     position: absolute;
     top: 265px;
@@ -46,17 +46,121 @@
 
 .restaurant-show-side {
     position: absolute;
-    width: 15%;
+    width: 22%;
     top: 265px;
     right: 5%;
     background-color: white;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-content: center;
     text-align: center;
 }
 
 .restaurant-show-side h2 {
     padding-bottom: 5px;
+}
+
+.restaurant-show-side h3 {
+    text-align: left;
+    font-size: 18px;
+    margin: 10px 0 10px 0;
+}
+
+.sidebar-search {
+    text-align: left;
+}
+
+.sidebar-datetime {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-date, 
+.sidebar-time {
+    width: 45%;
+    margin-bottom: 10px;
+}
+
+.show-party-options {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width:100%;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.sidebar-party-selector {
+    width: 100%;
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid lightgray;
+}
+
+.sidebar-party-selector:hover {
+    border-bottom: 1px solid #bf1722;
+}
+
+.sidebar-search h3 {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.party-show-option {
+    padding: 10px 0 7px 20px;
+    background-color: white;
+    font-size: 14px;
+}
+
+.party-show-option:hover {
+    background-color: lightgray;
+}
+
+.sidebar-search .date-input {
+    font-size: 14px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid lightgray;
+}
+
+.sidebar-search .date-input:hover {
+    border-bottom: 1px solid #bf1722;
+}
+
+.sidebar-search .react-datepicker {
+    left: 0;
+}
+
+.sidebar-search .react-datepicker--time-only {
+    margin-left: -1px;
+}
+
+.sidebar-search .react-datepicker__time {
+    height: 200px;
+}
+
+.sidebar-search .react-datepicker__time-list-item {
+    padding: 10px 0px 5px 5px;
+    font-size: 14px;
+}
+
+.sidebar-search .fas {
+    position: absolute;
+    font-size: 10px;
+}
+
+.sidebar-party-selector .fas {
+    left: 95%;
+}
+
+.sidebar-date .fas {
+    left: 42%;
+}
+
+.sidebar-time .fas {
+    left: 90%;
 }

@@ -25,7 +25,12 @@ class RestaurantIndex extends React.Component {
     loaded() {
         let restaurants = Object.values(this.props.restaurants)
         .map( restaurant => (
-            <RestaurantIndexItem key={restaurant.id} restaurant={restaurant} filters={this.props.filters} />
+            <RestaurantIndexItem 
+                key={restaurant.id} 
+                restaurant={restaurant} 
+                filters={this.props.filters}
+                changeFilter={this.props.changeFilter}
+            />
         ));
 
         return (

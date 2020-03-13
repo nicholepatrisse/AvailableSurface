@@ -95,13 +95,32 @@
     color: #bf1722;
 }
 
-.res-sucess {
-    width:500px;
+.res-success {
+    width:600px;
     height: 200px;
     position: relative;
     background-color: white;
     padding: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
+}
+
+.res-success h2 {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.res-success .reservation-main {
+    width:100%;
+}
+
+.res-success .reservation-detail li {
+    width: 30%;
+}
+
+.res-success a {
+    padding-top: 10px;
+    color: #247f9e;
 }

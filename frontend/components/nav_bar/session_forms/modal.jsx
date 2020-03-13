@@ -3,7 +3,7 @@ import { closeModal } from '../../../actions/modal_actions'
 import { connect } from 'react-redux';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
-import ReservationSucess from '../../reservation_sucess';
+import ReservationSuccessContainer from '../../reservation_success';
 
 const Modal = ({ modal, closeModal }) => {
     if (!modal) {
@@ -21,7 +21,7 @@ const Modal = ({ modal, closeModal }) => {
             break;
 
         case 'res-success':
-            component = <ReservationSucess />
+            component = <ReservationSuccessContainer />
             break;      
     
         default:

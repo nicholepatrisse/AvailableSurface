@@ -9,36 +9,24 @@
     position: relative;
 }
 
-.far {
-    position: absolute;
-    z-index: 5;
-}
-
-.fa-calendar {
-    top: 11px;
-    left: 10px;
-}
-
-.fa-clock {
-    top: 11px;
-    left: 160px;
-}
-
-.fa-user {
-    top: 11px;
-    left: 314px;
-}
-
 .time-selector,
 .party-selector,
 .date-selector {
     width: 125px;
-    overflow: hidden;
     background-color: white;
     padding: 10px 0 10px 27px;
     padding-bottom: 5px;
     cursor: pointer;
+    position: relative;
 }
+
+.far {
+    position: absolute;
+    z-index: 5;
+    top: 11px;
+    left: 10px;
+}
+
 
 .date-input {
     cursor: pointer;
@@ -58,6 +46,7 @@
     align-self: flex-start;
     left: 306px;
     width: 152px;
+    top: 1px;
     border-radius: 0 5px 5px;
     overflow: hidden;
     z-index: 3;
@@ -103,7 +92,6 @@
 .react-datepicker {
     background-color: white;
     cursor: pointer;
-    border-radius: 5px;
     padding: 10px;
     margin-top: -2px;
     margin-left: -10px;
@@ -111,6 +99,7 @@
     left: -17px;
     top: 3px;
     border-radius: 0 0 5px 5px;
+    z-index: 5;
 }
 
 .react-datepicker__week {
@@ -172,7 +161,7 @@
     left: -17px;
     top: 5px;
     border-radius: 0 0 5px 5px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .react-datepicker__time {
@@ -188,10 +177,30 @@
     background-color: lightgray;
 }
 
-@media only screen and (max-width: 600px) {
-    .party-selector, 
+@media only screen and (max-width: 800px) {
     .search-input,
     .search-bar {
         display: none;
     }
 }
+
+/* @media only screen and (max-width: 600px) {
+    .date-selector, 
+    .time-selector,
+    .party-selector,
+    .search-button {
+        width: 80%;
+        border-radius: 5px;
+        margin: 0 0 10px 0;
+    }
+
+    .fa-clock {
+        top:57px;
+        left: 10px;
+    }
+
+    .fa-user {
+        top: 102px;
+        left: 10px;
+    }
+} */

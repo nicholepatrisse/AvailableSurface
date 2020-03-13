@@ -10,6 +10,8 @@ const initialState = {
     cuisineParams: [],
     cityParams: [],
     priceParams: [],
+    occasion: '',
+    requests: '',
 };
 
 const filtersReducer = (state = initialState, action) => {
