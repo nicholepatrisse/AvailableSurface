@@ -9,18 +9,12 @@ require 'open-uri'
 # require 'JSON'
 
 User.destroy_all
-
-u1 = User.create!({email: 'danny@gmail.com', first_name: 'danny', last_name: 'phan', password:'password'})
-u2 = User.create!({email: 'eric@gmail.com', first_name: 'eric', last_name: 'ho', password:'password'})
-u3 = User.create!({email: 'nic@gmail.com', first_name: 'nic', last_name: 'kruger', password:'password'})
-u4 = User.create!({email: 'alec@gmail.com', first_name: 'alec', last_name: 'keeler', password:'password'})
-u5 = User.create!({email: 'james@gmail.com', first_name: 'james', last_name: 'berke', password:'password'})
-u6 = User.create!({email: 'demo@gmail.com', first_name: 'Demo', last_name: 'User', password:'password'})
+u1 = User.create!({email: 'demo@gmail.com', first_name: 'Demo', last_name: 'User', password:'password'})
 
 Restaurant.destroy_all
 Reservation.destroy_all
 
-cities = ["New york", 'san francisco', 'chicago', 'los angeles', 'miami', 'las vegas']
+cities = ["New york"]
 long_ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=5"
 short_ipsum = "https://baconipsum.com/api/?type=meat-and-filler&sentences=1"
 cuisines = ['French', 'Greek', 'Steakhouse', 'Seafood', 'American', 'Italian', 'Tapas', 'Japanese', 'Mexican', 'Sushi']
