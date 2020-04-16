@@ -1,0 +1,25 @@
+.footer-main {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+
+.social-link {
+    padding: 10px;
+}
+
+.social-link img {
+    height: 25px;
+    object-fit: contain;
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.social-link img:hover {
+    opacity: 1;
+}

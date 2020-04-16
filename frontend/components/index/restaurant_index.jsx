@@ -16,7 +16,7 @@ class RestaurantIndex extends React.Component {
     loading() {
         return (
             <div className="restaurant-index-main">
-                <div className="restaurants">
+                <div className="restaurants-loading">
                     <p>Loading restaurants, please hold.</p>
                     <img src={window.loading} className="loading-clock"/>
                 </div>
