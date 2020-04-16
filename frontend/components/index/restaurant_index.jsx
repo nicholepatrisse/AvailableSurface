@@ -8,23 +8,44 @@ class RestaurantIndex extends React.Component {
         this.props.fetchRestaurants(this.props.filters)
     }
 
-    calcTables() {
-        let num = Object.keys(this.props.restaurants).length;
+    calcTables(restaurants) {
+        let num = restaurants.length;
         return `${num} restaurants available!`;
     };
 
     loading() {
         return (
-            <div className="restaurants">
-                <p>Loading restaurants, please hold.</p>
-                <img src={window.loading} className="loading-clock"/>
+            <div className="restaurant-index-main">
+                <div className="restaurants">
+                    <p>Loading restaurants, please hold.</p>
+                    <img src={window.loading} className="loading-clock"/>
+                </div>
             </div>
         )
     };
 
     loaded() {
-        let restaurants = Object.values(this.props.restaurants)
-        .map( restaurant => (
+        let filteredRestaurants = Object.values(this.props.restaurants);
+        
+        let cuisines = this.props.toggles.cuisineParams;
+        if (cuisines.length > 0) {
+            filteredRestaurants = filteredRestaurants
+            .filter(restaurant => cuisines.includes(restaurant.cuisine))
+        };
+        
+        let cities = this.props.toggles.cityParams.map(city => city.split(',')[0]);
+        if (cities.length > 0) {
+            filteredRestaurants = filteredRestaurants
+            .filter(restaurant => cities.includes(restaurant.city))
+        };
+        
+        let prices = this.props.toggles.priceParams.map(price => price.length);
+        if (prices.length > 0) {
+            filteredRestaurants = filteredRestaurants
+            .filter(restaurant => prices.includes(restaurant.price))
+        };
+
+        let restaurants = filteredRestaurants.map(restaurant => (
             <RestaurantIndexItem 
                 key={restaurant.id} 
                 restaurant={restaurant} 
@@ -34,9 +55,15 @@ class RestaurantIndex extends React.Component {
         ));
 
         return (
-            <div className="restaurants">
-                <p>{this.calcTables()}</p>
-                {restaurants}
+            <div className="restaurant-index-main">
+                <IndexSidebar 
+                    updateToggleFilter={this.props.updateToggleFilter} 
+                    restaurants={Object.values(this.props.restaurants)} 
+                />
+                <div className="restaurants">
+                    <p>{this.calcTables(restaurants)}</p>
+                    {restaurants}
+                </div>
             </div>
         )
     }
@@ -47,12 +74,9 @@ class RestaurantIndex extends React.Component {
                 <div className="compact-search">
                     <SearchContainer />
                 </div>
-                <div className="restaurant-index-main">
-                    <IndexSidebar updateToggleFilter={this.props.updateToggleFilter}/>
-                    {this.props.loading ? 
-                    this.loading() :
-                    this.loaded()}
-                </div>
+                {this.props.loading ? 
+                this.loading() :
+                this.loaded()}
             </div>
         )
     };

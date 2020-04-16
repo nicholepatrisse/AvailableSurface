@@ -80,7 +80,7 @@ class ReservationForm extends React.Component {
         if (this.state.party_size === 'larger') partyDesc = 'Larger Party'
 
         let date = new Date(this.state.time);
-        let thumbUrl = this.props.restaurant.photoUrls[1];
+        let thumbUrl = this.props.restaurant.photoUrls[0];
 
         return(
             <div className="reservation-form">

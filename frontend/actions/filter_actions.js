@@ -24,9 +24,4 @@ export const toggleFilter = (filter, value) => ({
 export const updateFilters = filters => dispatch => {
     dispatch(changeFilters(filters));
     return fetchRestaurants(getState().ui.filters)(dispatch);
-}
-
-export const updateToggleFilter = (filter, value) => (dispatch, getState) => {
-    dispatch(toggleFilter(filter, value))
-    return fetchRestaurants(getState().ui.filters)(dispatch);
-}
+};
