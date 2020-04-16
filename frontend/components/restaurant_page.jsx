@@ -77,7 +77,6 @@ class RestaurantPage extends React.Component {
                 <div className="restaurant-show-main">
                     <ul className="restaurant-links">
                         <li>Overview</li>
-                        <li>Reviews</li>
                     </ul>
                     <h2>{this.props.restaurant.name}</h2>
                     <ul className="restaurant-desc">

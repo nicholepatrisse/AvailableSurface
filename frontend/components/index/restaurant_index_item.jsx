@@ -40,7 +40,6 @@ class RestaurantIndexItem extends React.Component {
                         <li>{this.price()}</li>
                         <li>{this.props.restaurant.cuisine}</li>
                         <li>{`${this.props.restaurant.city}, ${this.props.restaurant.state}`}</li>
-                        <li>{`${this.props.restaurant.openAt}-${this.props.restaurant.closeAt}`}</li>
                     </ul>
                     <ReservationButtons
                         restaurant={this.props.restaurant}
