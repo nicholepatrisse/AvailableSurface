@@ -26,7 +26,7 @@ class RestaurantIndexItem extends React.Component {
     }
 
     render () {
-        let thumbnailUrl = this.props.restaurant.photoUrls[1];
+        let thumbnailUrl = this.props.restaurant.photoUrls[0];
         
         return (
             <div key={this.props.restaurant.id} className="restaurant">

@@ -37,7 +37,7 @@ class ReservationItem extends React.Component {
         if (!restaurant) return null;
         let time = new Date(this.props.reservation.time);
         let partyDesc = this.props.reservation.partySize === 'larger' ? 'Larger Party' : `${this.props.reservation.partySize} People`
-        let thumbUrl = this.props.restaurant.photoUrls[1];
+        let thumbUrl = this.props.restaurant.photoUrls[0];
 
         return (
             <div className="reservation-main">

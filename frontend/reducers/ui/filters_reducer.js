@@ -7,9 +7,6 @@ const initialState = {
     dateParams: nextAvail,
     partyParams: 2,
     searchParams: "",
-    cuisineParams: [],
-    cityParams: [],
-    priceParams: [],
     occasion: '',
     requests: '',
 };
@@ -25,15 +22,6 @@ const filtersReducer = (state = initialState, action) => {
 
         case UPDATE_FILTERS:
             return action.filters;
-
-        case TOGGLE_FILTER:
-            let valIdx = newState[action.filter].indexOf(action.value);
-            if (valIdx > -1) {
-                newState[action.filter].splice(valIdx, 1);
-            } else {
-                newState[action.filter].push(action.value);
-            }
-            return newState;
     
         default:
             return state;

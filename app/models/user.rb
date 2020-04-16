@@ -4,7 +4,7 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6 }, allow_nil:true
 
     attr_reader :password
-    after_initialize :ensure_session_token, :ensure_photo
+    after_initialize :ensure_session_token
 
     has_many :reservations
     has_one_attached :photo
