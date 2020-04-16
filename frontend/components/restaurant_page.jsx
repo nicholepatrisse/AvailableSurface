@@ -73,7 +73,6 @@ class RestaurantPage extends React.Component {
         return (
             <div className="restaurant-show">
                 <div className="img-header">
-                    <img src={headerUrl} alt=""/>
                 </div>
                 <div className="restaurant-show-main">
                     <ul className="restaurant-links">
