@@ -17,6 +17,12 @@
     border-bottom: 1px solid lightgray;
 }
 
+.res-success .reservation-main {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 .reservation-main img {
     height: 100px;
     width: 100px;
@@ -46,13 +52,11 @@
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
 .reservation-detail li {
     position: relative;
     padding-left: 20px;
-    width: 20%;
 }
 
 .reservation-detail .far {

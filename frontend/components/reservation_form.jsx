@@ -67,7 +67,6 @@ class ReservationForm extends React.Component {
         e.preventDefault();
         let reservation = Object.assign({}, this.state);
         if (this.props.user && this.userChanged()) {
-            console.log('updating')
             this.updateUserInfo();
         };
 

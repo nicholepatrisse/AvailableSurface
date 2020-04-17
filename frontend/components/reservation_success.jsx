@@ -16,7 +16,6 @@ const ReservationSuccess = props => {
                 key={reservation.id}
                 editForm={false}
             />
-            <Link to="/reservations">See my reservations</Link>
         </div>
     );
 };
