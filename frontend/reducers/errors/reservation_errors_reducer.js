@@ -1,4 +1,4 @@
-import { RECIEVE_RESERVATION_ERRORS, RECIEVE_RESERVATION } from "../../actions/reservation_actions";
+import { RECEIVE_RESERVATION_ERRORS, RECEIVE_RESERVATION } from '../../actions/reservation_actions';
 
 const initialState = [];
 
@@ -7,14 +7,14 @@ const reservationErrorsReducer = (state = initialState, action) => {
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case RECIEVE_RESERVATION_ERRORS:
-            return action.errors;
-    
-        case RECIEVE_RESERVATION:
-            return initialState;
-            
-        default:
-            return state;
+      case RECEIVE_RESERVATION_ERRORS:
+        return action.errors;
+
+      case RECEIVE_RESERVATION:
+        return initialState;
+
+      default:
+        return state;
     }
 };
 

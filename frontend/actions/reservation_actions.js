@@ -22,14 +22,14 @@ export const receiveReservationErrors = errors => ({
 
 export const createReservation = reservation => dispatch => (
     ReservationAPIUtil.createReservation(reservation)
-    .then( reservation => dispatch(receiveReservation(reservation)))
+    .then( payload => dispatch(receiveReservation(payload.reservation)))
     .then( () => dispatch(openModal('res-success')))
     .fail( errors => dispatch(receiveReservationErrors(errors.responseJSON)) )
 );
 
 export const updateReservation = reservation => dispatch => (
     ReservationAPIUtil.updateReservation(reservation)
-    .then( reservation => dispatch(receiveReservation(reservation)))
+    .then( payload => dispatch(receiveReservation(payload.reservation)))
     .then(() => dispatch(openModal('res-success')))
     .fail(errors => dispatch(receiveReservationErrors(errors.responseJSON)))
 );
