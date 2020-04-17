@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchRestaurant } from '../actions/restaurant_actions';
-import { fetchUser } from '../actions/user_actions'
+import { fetchUser, updateUser } from '../actions/user_actions'
 import { openModal } from '../actions/modal_actions';
 import { createReservation, updateReservation } from '../actions/reservation_actions';
 import ReservationForm from './reservation_form';
@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => ({
     user: state.entities.users[state.session.userId],
     restaurantId: ownProps.match.params.id,
     filters: state.ui.filters,
-    edit: new URLSearchParams(ownProps.location.search).get('edit')
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +19,8 @@ const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
     createReservation: reservation => dispatch(createReservation(reservation)),
     updateReservation: reservation => dispatch(updateReservation(reservation)),
-})
+    updateUser: user => dispatch(updateUser(user))
+});
 
 export default connect(
     mapStateToProps,
