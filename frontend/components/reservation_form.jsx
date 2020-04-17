@@ -59,7 +59,6 @@ class ReservationForm extends React.Component {
         let user = Object.assign({}, this.props.user);
         user.phone_number = this.state.phone;
         user.email = this.state.email;
-        console.log(user);
         this.props.updateUser(user);
     };
 
