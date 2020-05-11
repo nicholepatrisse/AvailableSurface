@@ -41,6 +41,10 @@
     line-height: 1.5;
 }
 
+.restaurants {
+    margin-bottom: 50px;
+}
+
 .sidebar-divider {
     height: 1px;
     background-color: gray;
